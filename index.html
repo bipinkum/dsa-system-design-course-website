@@ -3,120 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DSA & System Design Course | Bipin Kumar</title>
+    <title>Bipin Kumar - DSA & System Design Course</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f9f9f9;
             text-align: center;
         }
-        .container {
-            width: 80%;
-            margin: auto;
+        .navbar {
+            background: white;
+            padding: 15px;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+        .navbar a {
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            font-weight: bold;
+        }
+        .hero {
+            padding: 100px 20px;
+            background: #fff;
+        }
+        h1 {
+            font-size: 36px;
+            color: #333;
+        }
+        .course-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        .course-card {
             background: white;
             padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
             border-radius: 10px;
+            text-align: left;
         }
-        h1 { color: #333; }
-        .section { margin-bottom: 30px; }
-        ul { text-align: left; display: inline-block; }
-        iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
+        .course-card h2 {
+            font-size: 20px;
+            color: #222;
         }
-        .button {
+        .course-card p {
+            font-size: 14px;
+            color: #555;
+        }
+        .details-button {
             display: inline-block;
-            padding: 10px 20px;
-            margin-top: 20px;
-            font-size: 18px;
-            background: #007BFF;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: #d9534f;
             color: white;
             text-decoration: none;
             border-radius: 5px;
         }
-        .button:hover {
-            background: #0056b3;
+        .register-section {
+            background: #fff;
+            padding: 50px 20px;
+            margin-top: 40px;
+        }
+        iframe {
+            width: 100%;
+            max-width: 600px;
+            height: 500px;
+            border: none;
+        }
+        .intro {
+            background: #fff;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Data Structures & System Design Course</h1>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="#courses">Courses</a>
+    </div>
 
-        <div class="section">
-            <h2>🚀 What You Will Learn?</h2>
-            <p>Master **Data Structures, Algorithms, and System Design** with a structured roadmap.</p>
-            <ul>
-                <li>Advanced Data Structures (Tries, Graphs, Trees, Heaps)</li>
-                <li>Algorithms (Sorting, Searching, Dynamic Programming, Backtracking)</li>
-                <li>Low-Level Design (Object-Oriented Design, SOLID Principles, Design Patterns)</li>
-                <li>High-Level Design (Scalability, Microservices, Caching, DB Sharding, Load Balancing)</li>
-                <li>Hands-on with **Real-World Projects**</li>
-            </ul>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Become a better engineer</h1>
+        <p>Super practical courses with a no-fluff approach to help you master Data Structures & System Design.</p>
+    </div>
+
+    <!-- Courses Section -->
+    <div id="courses" class="course-container">
+        <div class="course-card">
+            <h2>DSA Masterclass</h2>
+            <p>A structured course covering all DSA topics to help you crack coding interviews.</p>
+            <a href="#curriculum" class="details-button">Details →</a>
         </div>
-
-        <div class="section">
-            <h2>🎯 Who Can Join?</h2>
-            <p>This course is **perfect for:**</p>
-            <ul>
-                <li>BCA / MCA Students</li>
-                <li>Working Professionals transitioning into backend/system design roles</li>
-                <li>Software Engineers preparing for FAANG-level interviews</li>
-            </ul>
+        <div class="course-card">
+            <h2>System Design</h2>
+            <p>Learn to design scalable and fault-tolerant systems used by top companies.</p>
+            <a href="#curriculum" class="details-button">Details →</a>
         </div>
+    </div>
 
-        <div class="section">
-            <h2>💡 Key Features</h2>
-            <ul>
-                <li>🕒 **Lifetime Access** - Join any batch anytime.</li>
-                <li>📅 **Flexible Schedule** - Weekend & Weekday batches available.</li>
-                <li>📝 **Live & Recorded Lectures** - Watch at your own pace.</li>
-                <li>🛠 **Hands-on Assignments & Real-world Case Studies**</li>
-                <li>🎯 **Interview Preparation Guidance**</li>
-            </ul>
-        </div>
+    <!-- Google Form Registration -->
+    <div class="register-section">
+        <h2>Register for the Free Masterclass</h2>
+        <iframe src="https://forms.gle/EthuefZrJEQcyXxs8"></iframe>
+    </div>
 
-        <div class="section">
-            <h2>📜 Course Curriculum</h2>
-            <ul>
-                <li><strong>Module 1:</strong> Java Fundamentals (JVM, Compiler, Memory Management)</li>
-                <li><strong>Module 2:</strong> Data Structures & Algorithms (Arrays, Linked Lists, Trees, Graphs, DP)</li>
-                <li><strong>Module 3:</strong> Low-Level Design (SOLID, OOP, System Modelling)</li>
-                <li><strong>Module 4:</strong> High-Level Design (Microservices, Load Balancing, Caching, DB Scaling)</li>
-                <li><strong>Module 5:</strong> Designing Large-Scale Systems (Real-world Case Studies)</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>💰 Course Fee</h2>
-            <p><strong>₹X,XXX</strong> (One-Time Payment)</p>
-            <p>✅ Includes all live & recorded lectures</p>
-            <p>✅ Access to discussion groups & Q/A sessions</p>
-        </div>
-
-        <div class="section">
-            <h2>🌟 Testimonials</h2>
-            <p>What students say about the course:</p>
-            <ul>
-                <li>💬 *"The best course for mastering System Design!"* - Akash M.</li>
-                <li>💬 *"Helped me crack FAANG interviews!"* - Pooja S.</li>
-                <li>💬 *"Practical, project-based learning made it easy to understand complex topics."* - Rohit K.</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>📝 Register for a Free Masterclass</h2>
-            <p>Fill in the form below to attend a **free masterclass** and get a glimpse of the course.</p>
-            <iframe src="YOUR_GOOGLE_FORM_EMBED_LINK"></iframe>
-            <br>
-            <a class="button" href="YOUR_GOOGLE_FORM_LINK" target="_blank">Register Now</a>
-        </div>
-
+    <!-- Introduction Section -->
+    <div class="intro">
+        <h2>Hey, I am Bipin</h2>
+        <p>I am an Engineering Leader with 11+ years of experience across top tech companies. Passionate about system design, innovation, and scaling high-performing teams.</p>
+        <img class="profile-pic" src="https://www.linkedin.com/in/bipin-kumar-4287a237/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BAtDH9yY3S3ikqRm8Wzv2Ow%3D%3D" alt="Bipin Kumar">
     </div>
 
 </body>
