@@ -15,9 +15,8 @@
 
     .navbar {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      padding: 20px 10px;
+      padding: 20px 0;
       background-color: white;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       position: fixed;
@@ -27,13 +26,12 @@
     }
 
     .nav-item {
-      margin: 10px 15px;
-      font-size: 18px;
+      margin: 0 30px;
+      font-size: 20px;
       font-weight: bold;
       cursor: pointer;
       color: #333;
       transition: color 0.3s ease;
-      white-space: nowrap;
     }
 
     .nav-item:hover,
@@ -42,8 +40,20 @@
     }
 
     .container {
-      padding-top: 120px;
+      padding-top: 100px;
       text-align: center;
+    }
+
+    .header {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .subheader {
+      font-size: 20px;
+      color: #666;
+      margin-bottom: 50px;
     }
 
     .course-container {
@@ -90,54 +100,187 @@
       font-size: 16px;
     }
 
-    @media (max-width: 768px) {
-      .course-card {
-        width: 90%;
-        margin-bottom: 20px;
-      }
+    .intro-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      padding: 60px;
+      background: white;
+      flex-wrap: wrap;
+    }
 
-      .navbar {
-        flex-direction: column;
-        align-items: center;
-      }
+    .profile-pic {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
 
-      .nav-item {
-        margin: 8px 0;
-      }
+    .intro-text {
+      max-width: 600px;
+      text-align: left;
+      font-size: 18px;
+    }
+
+    .intro-text h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .intro-text h3 {
+      font-size: 22px;
+      color: #d9534f;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    iframe {
+      border: none;
+      width: 100%;
+      height: 80vh;
     }
   </style>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVZ9VG7YQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5HVZ9VG7YQ');
+</script>
 </head>
 <body>
   <div class="navbar">
-    <div class="nav-item active" onclick="showTab(event, 'courses')">Courses</div>
     <div class="nav-item" onclick="showTab(event, 'bipin')">Bipin Kumar</div>
+    <div class="nav-item active" onclick="showTab(event, 'courses')">Courses</div>
     <div class="nav-item" onclick="showTab(event, 'masterclass')">Masterclass</div>
     <div class="nav-item" onclick="showTab(event, 'teaching')">Teaching Style</div>
     <div class="nav-item" onclick="showTab(event, 'payment')">Payment</div>
+
   </div>
 
-  <div id="courses" class="container">
-    <div style="background: #fff3cd; color: #856404; padding: 10px 20px; text-align: center; border-left: 5px solid #ffeeba; font-weight: bold; margin-bottom: 20px;">
-      🎉 New Batch Starts 1st May 2025 — 20-Week Intensive Program • Limited Seats!
+<div id="bipin" class="container" style="display: none;">
+  <div class="intro-container">
+    <img class="profile-pic" src="bipin.jpeg" alt="Bipin Kumar" />
+    <div class="intro-text">
+      <h2 style="display: flex; align-items: center; gap: 15px;">
+        Hey, I am Bipin
+        <a href="https://www.linkedin.com/in/bipin-kumar-4287a237/" target="_blank" style="font-size: 16px; color: #0077b5; text-decoration: none;">
+          🔗 LinkedIn
+        </a>
+      </h2>
+      <h3>Mentor, Motivator, Problem-Solver & Technology Explorer</h3>
+      <p>I am a Senior Principal Software Engineer and an Engineering Leader, passionate about solving complex problems by breaking them down into simple, actionable steps. I’ve had the opportunity to work on large-scale microservices applications deployed on modern cloud platforms like Oracle Cloud and AWS.</p>
+      <p>With over 18 years of experience, I’ve led the transformation of monolithic systems into scalable, event-driven microservices using diverse technology stacks. I’ve architected several scalable, performant, and reliable solutions across industries.</p>
+      <p>My strength lies in simplifying complex system design and backend concepts, making them easy to understand for both students and professionals. I regularly mentor engineers and conduct masterclasses on Data Structures, Algorithms, and System Design to help aspiring developers crack top tech interviews.</p>
+      <blockquote style="font-size: 18px; font-weight: 500; color: #444; border-left: 5px solid #d9534f; margin: 30px 0; padding-left: 20px;">
+        Join my courses to not just learn the theory, but to understand how real-world systems are actually built.
+     </blockquote>
     </div>
+  </div>
+</div>
 
+
+  <div id="courses" class="container">
+    <!-- Add this inside the <div id="courses" class="container"> just after the course-container div -->
+
+<div class="key-highlights" style="max-width: 900px; margin: 40px auto; text-align: left;">
+  <h2 style="font-size: 28px; color: #d9534f; margin-bottom: 20px;">Key Highlights and Philosophy of the Course</h2>
+  <ul style="font-size: 15px; line-height: 1.8; color: #333; padding-left: 20px; list-style-type: disc;">
+    <li><strong>Do Help, Get Help</strong> – Build a collaborative and supportive peer network</li>
+    <li><strong>Think Like an Engineer</strong> – Emphasis on problem-solving and structured thinking</li>
+    <li><strong>Outcome-Oriented Learning</strong> – Whether your goal is to crack top-tier interviews or grow as an engineer, the approach is focused and intentional</li>
+    <li><strong>Lifetime Access & Flexible Batch Joining</strong> – Rejoin any batch and revisit content at your convenience</li>
+    <li><strong>Structured Roadmap</strong> – Covers end-to-end preparation for DSA and System Design</li>
+    <li><strong>Mock Interviews & Feedback</strong> – Get evaluated and improve through real interview simulations</li>
+    <li><strong>Tech + Mindset</strong> – Build both your technical strength and confidence to succeed</li>
+    <li><strong>Learn by Building</strong> – Apply concepts with real-world project scenarios and hands-on exercises</li>
+  </ul>
+</div>
+
+    
+  <div style="text-align: center; margin-top: 40px;">
+    <a href="#payment" onclick="showTab(event, 'payment')" class="details-button" style="font-size: 18px; padding: 12px 30px;">
+      Pay Now → ₹29,999
+    </a>
+  </div>
     <div class="course-container">
+      
       <div class="course-card">
-        <h2>Data Structures & Algorithms</h2>
+        <h2>Data Structure and Algorithm</h2>
         <p>A structured, mentor-led course to master Data Structures & Algorithms — from fundamentals to advanced concepts — with a clear focus on cracking coding interviews.</p>
-        <p style="color: #333; margin: 8px 0;"><strong>📅 Next Batch:</strong> Starts 1st May 2025</p>
-        <p style="color: #333;"><strong>⏳ Duration:</strong> 20 Weeks</p>
         <a href="https://github.com/bipinkum/DSA-Course" target="_blank" class="details-button">Details →</a>
       </div>
       <div class="course-card">
         <h2>System Design</h2>
         <p>A mentor-guided course to master scalable, fault-tolerant system design — with real-world use cases and strategies to crack system design interviews.</p>
-        <p style="color: #333; margin: 8px 0;"><strong>📅 Next Batch:</strong> Starts 1st May 2025</p>
-        <p style="color: #333;"><strong>⏳ Duration:</strong> 20 Weeks</p>
         <a href="https://github.com/bipinkum/System-Design-Course" target="_blank" class="details-button">Details →</a>
+      </div>
+     
+    </div>
+  
+      
+    <!-- Profile and Introduction inside Courses tab -->
+<div class="intro-container" style="margin-top: 60px;">
+    <img class="profile-pic" src="bipin.jpeg" alt="Bipin Kumar" />
+    <div class="intro-text">
+       <h2 style="display: flex; align-items: center; gap: 15px;">
+        Hey, I am Bipin
+        <a href="https://www.linkedin.com/in/bipin-kumar-4287a237/" target="_blank" style="font-size: 16px; color: #0077b5; text-decoration: none;">
+          🔗 LinkedIn
+        </a>
+      </h2>
+       <h3>Mentor, Motivator, Problem-Solver & Technology Explorer</h3>
+      <p>I am a Senior Principal Software Engineer and an Engineering Leader, passionate about solving complex problems by breaking them down into simple, actionable steps. I’ve had the opportunity to work on large-scale microservices applications deployed on modern cloud platforms like Oracle Cloud and AWS.</p>
+      <p>With over 18 years of experience, I’ve led the transformation of monolithic systems into scalable, event-driven microservices using diverse technology stacks. I’ve architected several scalable, performant, and reliable solutions across industries.</p>
+      <p>My strength lies in simplifying complex system design and backend concepts, making them easy to understand for both students and professionals. I regularly mentor engineers and conduct masterclasses on Data Structures, Algorithms, and System Design to help aspiring developers crack top tech interviews.</p>
+      <blockquote style="font-size: 18px; font-weight: 500; color: #444; border-left: 5px solid #d9534f; margin: 30px 0; padding-left: 20px;">
+        Join my courses to not just learn the theory, but to understand how real-world systems are actually built.
+     </blockquote>
+
+    </div>
+  </div>
+  
+  </div>
+
+  <div id="masterclass" class="container" style="display: none;">
+    <iframe src="https://forms.gle/EthuefZrJEQcyXxs8"></iframe>
+  </div>
+
+  <div id="teaching" class="container" style="display: none;">
+    <div class="course-container">
+      <div class="course-card">
+        <h2>Video 1: DSA Concept Simplified</h2>
+        <p>Watch how Bipin explains complex Data Structures using real-world analogies.</p>
+        <a href="https://drive.google.com/file/d/VIDEO1_LINK/view" target="_blank" class="details-button">Watch Video →</a>
+      </div>
+      <div class="course-card">
+        <h2>Video 2: Real-World System Design</h2>
+        <p>Get a sneak peek of how system design is taught using intuitive examples and diagrams.</p>
+        <a href="https://drive.google.com/file/d/VIDEO2_LINK/view" target="_blank" class="details-button">Watch Video →</a>
       </div>
     </div>
   </div>
+  
+  <div id="payment" class="container" style="display: none;">
+    <div style="max-width: 700px; margin: 60px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); text-align: center;">
+      <h2 style="color: #d9534f; font-size: 28px; margin-bottom: 20px;">Scan & Pay for the Course</h2>
+      <p style="font-size: 18px; color: #333;">You can scan the QR code below using any UPI app (PhonePe, Google Pay, Paytm, etc.) to make the payment.</p>
+      
+      <img src="QRCode.png" alt="Payment QR Code" style="margin: 30px auto; max-width: 300px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" />
+  
+      <p style="margin-top: 20px; font-size: 16px; color: #444;">
+        Amount: <strong>₹29,999</strong><br/>
+        After payment, please send a screenshot to <strong>+91-9535859400</strong> on WhatsApp.
+      </p>
+    
+    </div>
+  </div>
+  
+  
 
   <script>
     function showTab(event, tabId) {
@@ -152,9 +295,12 @@
       event.target.classList.add('active');
     }
 
+    // Show default tab
     window.onload = function () {
       showTab({target: document.querySelector('.nav-item.active')}, 'courses');
     };
+
+
   </script>
 </body>
 </html>
