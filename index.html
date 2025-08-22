@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bipin Kumar - DSA & System Design Course</title>
   <style>
     body {
@@ -18,7 +19,7 @@
       justify-content: center;
       padding: 20px 0;
       background-color: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       position: fixed;
       width: 100%;
       top: 0;
@@ -68,7 +69,7 @@
       background: white;
       padding: 30px;
       width: 360px;
-      box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
       border-radius: 15px;
       text-align: left;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -76,7 +77,7 @@
 
     .course-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0px 6px 24px rgba(0,0,0,0.15);
+      box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.15);
     }
 
     .course-card h2 {
@@ -115,7 +116,7 @@
       height: 400px;
       border-radius: 100%;
       object-fit: cover;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .intro-text {
@@ -135,107 +136,90 @@
       margin-bottom: 20px;
       font-style: italic;
     }
-  </style>
-  <!-- Google tag (gtag.js) -->
+  </style> <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVZ9VG7YQ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-5HVZ9VG7YQ');
-  </script>
+  <script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-5HVZ9VG7YQ'); </script>
 </head>
+
 <body>
   <div class="navbar">
     <div class="nav-item" onclick="showTab(event, 'bipin')">Bipin Kumar</div>
     <div class="nav-item active" onclick="showTab(event, 'courses')">Courses</div>
-   <!-- <div class="nav-item" onclick="showTab(event, 'masterclass')">Masterclass</div> -->
+    <!-- <div class="nav-item" onclick="showTab(event, 'masterclass')">Masterclass</div> -->
     <div class="nav-item" onclick="showTab(event, 'teaching')">Teaching Style</div>
     <div class="nav-item" onclick="showTab(event, 'payment')">Payment</div>
-    <div class="nav-item">
-    <a href="student-dashboard.html" style="text-decoration: none; color: inherit;">Student Dashboard</a>
+    <div class="nav-item"> <a href="student-dashboard.html" style="text-decoration: none; color: inherit;">Student
+        Dashboard</a> </div>
   </div>
+  <div id="bipin" class="container" style="display: none;">
+    <div class="intro-container"> <img class="profile-pic" src="bipin.jpeg" alt="Bipin Kumar" />
+      <div class="intro-text">
+        <h2 style="display: flex; align-items: center; gap: 15px;"> Hey, I am Bipin <a
+            href="https://www.linkedin.com/in/bipin-kumar-4287a237/" target="_blank"
+            style="font-size: 16px; color: #0077b5; text-decoration: none;"> 🔗 LinkedIn </a> </h2>
+        <h3>Mentor, Motivator, Problem-Solver & Technology Explorer</h3>
+        <p>I am a Senior Principal Software Engineer and an Engineering Leader, passionate about solving complex
+          problems by breaking them down into simple, actionable steps. I’ve had the opportunity to work on large-scale
+          microservices applications deployed on modern cloud platforms like Oracle Cloud and AWS.</p>
+        <p>With over 18 years of experience, I’ve led the transformation of monolithic systems into scalable,
+          event-driven microservices using diverse technology stacks. I’ve architected several scalable, performant, and
+          reliable solutions across industries.</p>
+        <blockquote
+          style="font-size: 18px; font-weight: 500; color: #444; border-left: 5px solid #d9534f; margin: 30px 0; padding-left: 20px;">
+          Join my courses to not just learn the theory, but to understand how real-world systems are actually built.
+        </blockquote>
+      </div>
+    </div>
   </div>
-
-  <!-- Bipin intro -->
-  <div id="bipin" class="container" style="display:none;">
-    <h1>Hello, I am Bipin</h1>
-    <p>Senior Principal Software Engineer & Engineering Leader, passionate about teaching DSA & System Design.</p>
-  </div>
-
   <div id="courses" class="container">
     <div class="course-container">
       <div class="course-card">
         <h2>Data Structure and Algorithm</h2>
-        <p>A structured, mentor-led course to master Data Structures & Algorithms — from fundamentals to advanced concepts — with a clear focus on cracking coding interviews.</p>
+        <p>A structured, mentor-led course to master Data Structures & Algorithms — from fundamentals to advanced
+          concepts — with a clear focus on cracking coding interviews.</p>
         <p style="color: #333; margin: 8px 0;"><strong>📅 Next Batch:</strong> Starts 1st September 2025</p>
-        <p style="color: #333;"><strong>⏳ Duration:</strong> 20 Weeks</p>
-        <a href="https://github.com/bipinkum/DSA-Course" target="_blank" class="details-button">Details →</a>
+        <p style="color: #333;"><strong>⏳ Duration:</strong> 20 Weeks</p> <a
+          href="https://github.com/bipinkum/DSA-Course" target="_blank" class="details-button">Details →</a>
       </div>
       <div class="course-card">
         <h2>System Design</h2>
-        <p>A mentor-guided course to master scalable, fault-tolerant system design — with real-world use cases and strategies to crack system design interviews.</p>
+        <p>A mentor-guided course to master scalable, fault-tolerant system design — with real-world use cases and
+          strategies to crack system design interviews.</p>
         <p style="color: #333; margin: 8px 0;"><strong>📅 Next Batch:</strong> Starts 1st September 2025</p>
-        <p style="color: #333;"><strong>⏳ Duration:</strong> 20 Weeks</p>
-        <a href="https://github.com/bipinkum/System-Design-Course" target="_blank" class="details-button">Details →</a>
+        <p style="color: #333;"><strong>⏳ Duration:</strong> 20 Weeks</p> <a
+          href="https://github.com/bipinkum/System-Design-Course" target="_blank" class="details-button">Details →</a>
       </div>
     </div>
   </div>
-
-  <!-- <div id="masterclass" class="container" style="display: none;">
-    <p style="text-align: center; font-size: 15px; color: #666; margin-top: 10px;">
-      🎯 This masterclass is your entry point to the full <strong>20 weeks program</strong> starting <strong>1st May 2025</strong>.
-    </p>
-    <iframe src="https://forms.gle/EthuefZrJEQcyXxs8"></iframe>
-  </div>
--->
+  <!-- <div id="masterclass" class="container" style="display: none;"> <p style="text-align: center; font-size: 15px; color: #666; margin-top: 10px;"> 🎯 This masterclass is your entry point to the full <strong>20 weeks program</strong> starting <strong>1st May 2025</strong>. </p> <iframe src="https://forms.gle/EthuefZrJEQcyXxs8"></iframe> </div> -->
   <div id="teaching" class="container" style="display: none;">
     <p style="color: #333; margin: 8px 0;"><strong>📅 Next Batch:</strong> Starts 1st September 2025</p>
     <p style="color: #333;"><strong>⏳ Duration:</strong> 20 Weeks</p>
     <div class="course-container">
       <div class="course-card">
         <h2>Video 1: DSA Concept Simplified</h2>
-        <p>Watch how Bipin explains complex Data Structures using real-world analogies.</p>
-        <a href="https://d2akmzsrq67og8.cloudfront.net/DSA/video1759923415.mp4" target="_blank" class="details-button">Watch Video →</a>
+        <p>Watch how Bipin explains complex Data Structures using real-world analogies.</p> <a
+          href="https://d2akmzsrq67og8.cloudfront.net/DSA/video1759923415.mp4" target="_blank"
+          class="details-button">Watch Video →</a>
       </div>
       <div class="course-card">
         <h2>Video 2: Real-World System Design</h2>
-        <p>Get a sneak peek of how system design is taught using intuitive examples and diagrams.</p>
-        <a href="https://drive.google.com/file/d/VIDEO2_LINK/view" target="_blank" class="details-button">Watch Video →</a>
+        <p>Get a sneak peek of how system design is taught using intuitive examples and diagrams.</p> <a
+          href="https://drive.google.com/file/d/VIDEO2_LINK/view" target="_blank" class="details-button">Watch Video
+          →</a>
       </div>
     </div>
-  </div> 
-
-  <!-- Payment Tab with Razorpay Hosted Link -->
+  </div> <!-- Payment Tab with Razorpay Hosted Link -->
   <div id="payment" class="container" style="display: none;">
-    <div style="max-width: 700px; margin: 60px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); text-align: center;">
+    <div
+      style="max-width: 700px; margin: 60px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); text-align: center;">
       <h2 style="color: #d9534f; font-size: 28px; margin-bottom: 20px;">Pay for the Course</h2>
       <p style="font-size: 18px; color: #333;">Click the button below to pay ₹35,000 securely:</p>
-
-      <!-- Razorpay Hosted Payment Page Link -->
-      <a href="https://rzp.io/rzp/fhbHRyTK" target="_blank" class="details-button" style="font-size: 18px; padding: 12px 30px;">
-        Pay Now → ₹35,000
-      </a>
+      <!-- Razorpay Hosted Payment Page Link --> <a href="https://rzp.io/rzp/fhbHRyTK" target="_blank"
+        class="details-button" style="font-size: 18px; padding: 12px 30px;"> Pay Now → ₹35,000 </a>
     </div>
   </div>
-
-  <script>
-    function showTab(event, tabId) {
-      document.querySelectorAll('.container').forEach(tab => {
-        tab.style.display = 'none';
-      });
-      document.getElementById(tabId).style.display = 'block';
-
-      document.querySelectorAll('.nav-item').forEach(item => {
-        item.classList.remove('active');
-      });
-      event.target.classList.add('active');
-    }
-
-    // Show default tab
-    window.onload = function () {
-      showTab({target: document.querySelector('.nav-item.active')}, 'courses');
-    };
-  </script>
+  <script> function showTab(event, tabId) { document.querySelectorAll('.container').forEach(tab => { tab.style.display = 'none'; }); document.getElementById(tabId).style.display = 'block'; document.querySelectorAll('.nav-item').forEach(item => { item.classList.remove('active'); }); event.target.classList.add('active'); } // Show default tab window.onload = function () { showTab({target: document.querySelector('.nav-item.active')}, 'courses'); }; </script>
 </body>
+
 </html>
