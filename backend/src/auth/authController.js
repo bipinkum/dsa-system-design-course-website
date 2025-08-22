@@ -41,11 +41,12 @@ export const verifyMagicLink = (req, res) => {
     res.cookie("auth_token", token, {
       httpOnly: true,
       secure: true, // true in production (HTTPS)
+      sameSite: "Strict",
       maxAge: 15 * 60 * 1000 // 15 minutes
     });
 
     // ✅ Redirect to frontend courses page without token in URL
-    res.redirect("https://bipinkumar.me/courses");
+    res.redirect("https://courses.bipinkumar.me/courses");
   } catch (err) {
     console.error(err);
     res.status(500).send("Verification failed");

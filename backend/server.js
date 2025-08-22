@@ -4,30 +4,30 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 
 import authRoutes from "./src/auth/authRoutes.js";
-import { verifyToken } from "./src/utils/jwt.js"; // ✅ static import
+import { verifyToken } from "./src/utils/jwt.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // ✅ CORS Middleware (must be before routes)
-app.use(cors({
-  origin: "https://bipinkumar.me",  // your frontend domain
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: "https://bipinkumar.me", // frontend domain
+    credentials: true, // allow cookies
+  })
+);
 
 // Middlewares
-app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieParser());
 
 // Routes
 app.use("/auth", authRoutes);
 
-// API for student courses
+// ✅ Protected API for student courses
 app.get("/api/student-courses", (req, res) => {
-  // Extract token from Authorization header
-  const token = req.headers.authorization?.split(" ")[1];
-  if (!token) return res.status(401).json({ error: "Token required" });
+  const token = req.cookies.auth; // ✅ read JWT from cookie
+  if (!token) return res.status(401).json({ error: "Not authenticated" });
 
   try {
     const decoded = verifyToken(token);
@@ -35,14 +35,14 @@ app.get("/api/student-courses", (req, res) => {
 
     // Example course list
     const courses = [
-      { name: "DSA Course", videoUrl: "https://your-cloudfront/video1.mp4" },
-      { name: "System Design Course", videoUrl: "https://your-cloudfront/video2.mp4" }
+      { name: "DSA Course", videoUrl: "https://d2akmzsrq67og8.cloudfront.net/DSA/video1759923415.mp4" },
+      { name: "System Design Course", videoUrl: "https://d2akmzsrq67og8.cloudfront.net/DSA/video1759923415.mp4" },
     ];
 
     res.json({ courses });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Error fetching courses" });
+    console.error("Error verifying token:", err);
+    res.status(401).json({ error: "Unauthorized" });
   }
 });
 
