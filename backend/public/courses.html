@@ -27,6 +27,7 @@
     }
 
     const sessionToken = sessionStorage.getItem("auth_token");
+    alert('sessionToken'+ sessionToken)
     if (!sessionToken) {
       document.getElementById("courses").innerHTML = "<p style='color:red;text-align:center;'>You are not logged in. Please use your magic link.</p>";
     } else {
@@ -38,6 +39,7 @@
       .then(data => {
         const container = document.getElementById("courses");
         container.innerHTML = "";
+         alert('data.courses'+ data.courses)
         if (data.courses && data.courses.length > 0) {
           data.courses.forEach(course => {
             const div = document.createElement("div");

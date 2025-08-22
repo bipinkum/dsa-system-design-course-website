@@ -38,7 +38,8 @@ export const verifyMagicLink = (req, res) => {
     res.cookie("auth_token", token, {
       httpOnly: true,
       secure: true, // HTTPS only
-      sameSite: "Strict",
+      sameSite: "Lax",
+      domain: "courses.bipinkumar.me", // ✅ explicitly set domain
       maxAge: 15 * 60 * 1000 // 15 minutes
     });
 
