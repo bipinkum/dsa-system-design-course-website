@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path"; 
+import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -9,6 +10,8 @@ import { verifyToken } from "./src/utils/jwt.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // ✅ CORS Middleware
 app.use(
@@ -57,12 +60,12 @@ app.get("/api/student-courses", (req, res) => {
 
 // ✅ Serve courses.html when hitting root
 app.get("/", (req, res) => {
-  res.sendFile(path.join(path.resolve(), "public", "courses.html"));
+  res.sendFile(path.join(__dirname, "public", "courses.html"));
 });
 
 // ✅ Optionally also serve /courses
 app.get("/courses", (req, res) => {
-  res.sendFile(path.join(path.resolve(), "public", "courses.html"));
+  res.sendFile(path.join(__dirname, "public", "courses.html"));
 });
 
 app.listen(PORT, () => {
