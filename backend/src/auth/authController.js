@@ -5,20 +5,30 @@ import { config } from "../../config.js";
 export const sendMagicLink = async (req, res) => {
   try {
     const { email } = req.body;
-    if (!email || !config.paidUsers.includes(email)) {
-      return res.status(400).json({ error: "Invalid or unregistered email" });
+    console.log("Received email:", email);
+
+    if (!email) return res.status(400).json({ error: "Email is required" });
+
+    // Check if email is paid
+    if (!config.paidUsers.includes(email)) {
+      console.log("Email not in paid users list:", email);
+      return res.status(401).json({ error: "Email not authorized" });
     }
 
     const token = generateToken({ email });
-    const magicLink = `${config.serverUrl}/auth/verify?token=${token}`;
+    const magicLink = `${config.clientUrl}/student-dashboard.html?token=${token}`;
+    console.log("Generated magic link:", magicLink);
 
     await sendEmail(email, "Your Magic Login Link", `Click here to login: ${magicLink}`);
-    res.json({ message: "Magic link sent to email!" });
+    console.log("Email sent successfully");
+
+    return res.json({ message: "Magic link sent to email!" });
   } catch (error) {
-    console.error(error);
+    console.error("Error in sendMagicLink:", error);
     res.status(500).json({ error: "Error sending magic link" });
   }
 };
+
 
 export const verifyMagicLink = (req, res) => {
   try {
