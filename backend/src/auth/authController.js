@@ -16,7 +16,7 @@ export const sendMagicLink = async (req, res) => {
     }
 
     const token = generateToken({ email });
-    const magicLink = `${config.clientUrl}/student-dashboard.html?token=${token}`;
+    const magicLink = `${config.clientUrl}?token=${token}`;
     console.log("Generated magic link:", magicLink);
 
     await sendEmail(email, "Your Magic Login Link", `Click here to login: ${magicLink}`);
