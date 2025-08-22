@@ -2,39 +2,40 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import path from "path";
-import { fileURLToPath } from "url";
 
 import authRoutes from "./src/auth/authRoutes.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 const app = express();
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT || 5000;
 
 // Middlewares
 app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-// Serve frontend static pages
-app.use(express.static(path.join(__dirname, "../frontend"))); // <-- frontend folder
-
 // Routes
 app.use("/auth", authRoutes);
 
 // API for student courses
 app.get("/api/student-courses", (req, res) => {
-  const userEmail = req.cookies.userEmail;
-  if (!userEmail) return res.status(401).json({ error: "Not logged in" });
+  const token = req.headers.authorization?.split(" ")[1];
+  if (!token) return res.status(401).json({ error: "Token required" });
 
-  const courses = [
-    { name: "DSA Course", videoUrl: "https://your-cloudfront/video1.mp4" },
-    { name: "System Design Course", videoUrl: "https://your-cloudfront/video2.mp4" },
-  ];
+  try {
+    const { verifyToken } = await import("./src/utils/jwt.js");
+    const decoded = verifyToken(token);
+    if (!decoded) return res.status(401).json({ error: "Invalid token" });
 
-  res.json({ courses });
+    const courses = [
+      { name: "DSA Course", videoUrl: "https://your-cloudfront/video1.mp4" },
+      { name: "System Design Course", videoUrl: "https://your-cloudfront/video2.mp4" }
+    ];
+
+    res.json({ courses });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Error fetching courses" });
+  }
 });
 
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));

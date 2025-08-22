@@ -5,10 +5,53 @@
 </head>
 <body>
   <h1>Welcome to Your Dashboard</h1>
+
+  <!-- Step 1: Enter email to get magic link -->
+  <div id="emailSection">
+    <input type="email" id="email" placeholder="Enter your email" />
+    <button id="sendLinkBtn">Get Magic Link</button>
+    <p id="message"></p>
+  </div>
+
+  <!-- Step 2: Courses will appear here -->
   <div id="courses"></div>
 
   <script>
-    fetch("/api/student-courses", { credentials: 'include' })
+    // Send magic link
+    document.getElementById("sendLinkBtn").addEventListener("click", async () => {
+      const email = document.getElementById("email").value;
+      const messageEl = document.getElementById("message");
+
+      if (!email) {
+        messageEl.textContent = "Please enter your email";
+        return;
+      }
+
+      try {
+        const response = await fetch("https://dsa-system-design-course-website.onrender.com/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email })
+        });
+
+        const data = await response.json();
+        messageEl.textContent = data.message || data.error;
+      } catch (err) {
+        console.error(err);
+        messageEl.textContent = "Error sending magic link";
+      }
+    });
+
+    // Step 3: Fetch courses if token is present in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+
+    if (token) {
+      document.getElementById("emailSection").style.display = "none"; // hide email input
+
+      fetch(`https://dsa-system-design-course-website.onrender.com/api/student-courses`, {
+        headers: { "Authorization": `Bearer ${token}` }
+      })
       .then(res => res.json())
       .then(data => {
         const container = document.getElementById("courses");
@@ -22,6 +65,7 @@
         });
       })
       .catch(err => console.error(err));
+    }
   </script>
 </body>
 </html>
