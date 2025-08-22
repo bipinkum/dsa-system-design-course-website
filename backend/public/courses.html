@@ -9,6 +9,7 @@
     h1 { text-align: center; margin-bottom: 40px; }
     .course-card { background: white; padding: 20px; margin-bottom: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
     video { width: 100%; max-width: 600px; margin-top: 10px; border-radius: 8px; }
+    p { text-align: center; font-size: 18px; }
   </style>
 </head>
 <body>
@@ -16,31 +17,30 @@
   <div id="courses"></div>
 
   <script>
-    // Extract token from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get("token");
+    const coursesContainer = document.getElementById("courses");
 
-    if (token) {
-      // Save in sessionStorage and remove from URL
-      sessionStorage.setItem("auth_token", token);
-      window.history.replaceState({}, document.title, "/courses");
+    // ✅ Extract token from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const tokenFromUrl = urlParams.get("token");
+
+    if (tokenFromUrl) {
+      // Save token in sessionStorage and remove from URL
+      sessionStorage.setItem("auth_token", tokenFromUrl);
+      window.history.replaceState({}, document.title, "/courses.html");
     }
 
-    const sessionToken = sessionStorage.getItem("auth_token");
-    alert('sessionToken'+ sessionToken)
-    if (!sessionToken) {
-      document.getElementById("courses").innerHTML = "<p style='color:red;text-align:center;'>You are not logged in. Please use your magic link.</p>";
+    const authToken = sessionStorage.getItem("auth_token");
+
+    if (!authToken) {
+      coursesContainer.innerHTML = "<p style='color:red;'>You are not logged in. Please use your magic link.</p>";
     } else {
-      // Fetch courses using token
+      // ✅ Fetch courses from backend
       fetch("https://dsa-system-design-course-website.onrender.com/api/student-courses", {
-        headers: { "Authorization": `Bearer ${sessionToken}` }
+        headers: { "Authorization": `Bearer ${authToken}` }
       })
       .then(res => res.json())
       .then(data => {
-        const container = document.getElementById("courses");
-        container.innerHTML = "";
-         alert('data'+ data);
-         alert('data.courses'+ data.courses);
+        coursesContainer.innerHTML = "";
         if (data.courses && data.courses.length > 0) {
           data.courses.forEach(course => {
             const div = document.createElement("div");
@@ -49,15 +49,15 @@
               <h2>${course.name}</h2>
               <video src="${course.videoUrl}" controls></video>
             `;
-            container.appendChild(div);
+            coursesContainer.appendChild(div);
           });
         } else {
-          container.innerHTML = "<p style='text-align:center;'>No courses available.</p>";
+          coursesContainer.innerHTML = "<p>No courses available.</p>";
         }
       })
       .catch(err => {
         console.error(err);
-        document.getElementById("courses").innerHTML = "<p style='color:red;text-align:center;'>Failed to load courses.</p>";
+        coursesContainer.innerHTML = "<p style='color:red;'>Failed to load courses. Please try again later.</p>";
       });
     }
   </script>
