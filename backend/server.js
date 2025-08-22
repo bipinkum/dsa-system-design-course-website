@@ -21,6 +21,9 @@ app.use(
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+// Serve static files from public/
+app.use(express.static(path.join(path.resolve(), "public")));
+
 // Routes
 app.use("/auth", authRoutes);
 

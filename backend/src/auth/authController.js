@@ -43,7 +43,8 @@ export const verifyMagicLink = (req, res) => {
     });
 
     // Redirect to courses page without token in URL
-    res.redirect(`${config.clientCoursesUrl}/courses`);
+    //res.redirect(`${config.clientCoursesUrl}/courses.htnl`);
+    res.redirect("/courses.html");
   } catch (err) {
     console.error(err);
     res.status(500).send("Verification failed");
