@@ -4,6 +4,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 
 import authRoutes from "./src/auth/authRoutes.js";
+import { verifyToken } from "./src/utils/jwt.js"; // ✅ static import
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -18,14 +19,15 @@ app.use("/auth", authRoutes);
 
 // API for student courses
 app.get("/api/student-courses", (req, res) => {
+  // Extract token from Authorization header
   const token = req.headers.authorization?.split(" ")[1];
   if (!token) return res.status(401).json({ error: "Token required" });
 
   try {
-    const { verifyToken } = await import("./src/utils/jwt.js");
     const decoded = verifyToken(token);
-    if (!decoded) return res.status(401).json({ error: "Invalid token" });
+    if (!decoded) return res.status(401).json({ error: "Invalid or expired token" });
 
+    // Example course list
     const courses = [
       { name: "DSA Course", videoUrl: "https://your-cloudfront/video1.mp4" },
       { name: "System Design Course", videoUrl: "https://your-cloudfront/video2.mp4" }
@@ -38,4 +40,11 @@ app.get("/api/student-courses", (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+// Root route
+app.get("/", (req, res) => {
+  res.send("🚀 Magic Link Backend Running...");
+});
+
+app.listen(PORT, () => {
+  console.log(`✅ Server running on http://localhost:${PORT}`);
+});
