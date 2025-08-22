@@ -34,10 +34,16 @@ export const verifyMagicLink = (req, res) => {
     const decoded = verifyToken(token);
     if (!decoded) return res.status(401).send("Invalid or expired token");
 
-    // Redirect to courses frontend without token in final URL
-    const redirectUrl = `${config.clientCoursesUrl}/courses?token=${token}`;
-    res.redirect(redirectUrl);
+    // ✅ Optionally: set HTTP-only cookie for API access
+    res.cookie("auth_token", token, {
+      httpOnly: true,
+      secure: true, // HTTPS only
+      sameSite: "Strict",
+      maxAge: 15 * 60 * 1000 // 15 minutes
+    });
 
+    // Redirect to courses page without token in URL
+    res.redirect(`${config.clientCoursesUrl}/courses`);
   } catch (err) {
     console.error(err);
     res.status(500).send("Verification failed");
