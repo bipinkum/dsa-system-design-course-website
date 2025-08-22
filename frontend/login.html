@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Login</title>
+</head>
+<body>
+  <h1>Login with Email</h1>
+  <input type="email" id="email" placeholder="Enter your email"/>
+  <button onclick="login()">Send Magic Link</button>
+
+  <script>
+    function login() {
+      const email = document.getElementById("email").value;
+      fetch("/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email })
+      })
+      .then(res => res.json())
+      .then(data => alert(data.message || data.error))
+      .catch(err => console.error(err));
+    }
+  </script>
+</body>
+</html>

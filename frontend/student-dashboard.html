@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Dashboard</title>
+</head>
+<body>
+  <h1>Welcome to Your Dashboard</h1>
+  <div id="courses"></div>
+
+  <script>
+    fetch("/api/student-courses", { credentials: 'include' })
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("courses");
+        data.courses.forEach(course => {
+          const div = document.createElement("div");
+          div.innerHTML = `
+            <h2>${course.name}</h2>
+            <video src="${course.videoUrl}" controls width="600"></video>
+          `;
+          container.appendChild(div);
+        });
+      })
+      .catch(err => console.error(err));
+  </script>
+</body>
+</html>
