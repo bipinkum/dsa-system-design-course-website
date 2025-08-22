@@ -11,5 +11,6 @@ export const config = {
     pass: process.env.SMTP_PASS
   },
   jwtSecret: process.env.JWT_SECRET || "default_jwt_secret",
+  clientCoursesUrl: "https://courses.bipinkumar.me",
   paidUsers: process.env.PAID_USERS ? process.env.PAID_USERS.split(",") : []
 };

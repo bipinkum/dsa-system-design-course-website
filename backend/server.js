@@ -9,10 +9,10 @@ import { verifyToken } from "./src/utils/jwt.js";
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// ✅ CORS Middleware (must be before routes)
+// ✅ CORS Middleware
 app.use(
   cors({
-    origin: "https://bipinkumar.me", // frontend domain
+    origin: ["https://bipinkumar.me", "https://courses.bipinkumar.me"], // frontend domains
     credentials: true, // allow cookies
   })
 );
@@ -26,7 +26,8 @@ app.use("/auth", authRoutes);
 
 // ✅ Protected API for student courses
 app.get("/api/student-courses", (req, res) => {
-  const token = req.cookies.auth; // ✅ read JWT from cookie
+  // Read JWT from HTTP-only cookie
+  const token = req.cookies.auth_token;
   if (!token) return res.status(401).json({ error: "Not authenticated" });
 
   try {
@@ -35,8 +36,14 @@ app.get("/api/student-courses", (req, res) => {
 
     // Example course list
     const courses = [
-      { name: "DSA Course", videoUrl: "https://d2akmzsrq67og8.cloudfront.net/DSA/video1759923415.mp4" },
-      { name: "System Design Course", videoUrl: "https://d2akmzsrq67og8.cloudfront.net/DSA/video1759923415.mp4" },
+      {
+        name: "DSA Course",
+        videoUrl: "https://d2akmzsrq67og8.cloudfront.net/DSA/video1759923415.mp4",
+      },
+      {
+        name: "System Design Course",
+        videoUrl: "https://d2akmzsrq67og8.cloudfront.net/DSA/video1759923415.mp4",
+      },
     ];
 
     res.json({ courses });

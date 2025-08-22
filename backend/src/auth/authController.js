@@ -5,22 +5,19 @@ import { config } from "../../config.js";
 export const sendMagicLink = async (req, res) => {
   try {
     const { email } = req.body;
-    console.log("Received email:", email);
-
     if (!email) return res.status(400).json({ error: "Email is required" });
 
-    // Check if email is paid
+    // Only allow paid users
     if (!config.paidUsers.includes(email)) {
-      console.log("Email not in paid users list:", email);
       return res.status(401).json({ error: "Email not authorized" });
     }
 
     const token = generateToken({ email });
-    const magicLink = `${config.clientUrl}?token=${token}`;
-    console.log("Generated magic link:", magicLink);
+
+    // Send magic link to the courses domain
+    const magicLink = `${config.clientCoursesUrl}?token=${token}`;
 
     await sendEmail(email, "Your Magic Login Link", `Click here to login: ${magicLink}`);
-    console.log("Email sent successfully");
 
     return res.json({ message: "Magic link sent to email!" });
   } catch (error) {
@@ -37,19 +34,12 @@ export const verifyMagicLink = (req, res) => {
     const decoded = verifyToken(token);
     if (!decoded) return res.status(401).send("Invalid or expired token");
 
-    // ✅ Set HTTP-only cookie
-    res.cookie("auth_token", token, {
-      httpOnly: true,
-      secure: true, // true in production (HTTPS)
-      sameSite: "Strict",
-      maxAge: 15 * 60 * 1000 // 15 minutes
-    });
+    // Redirect to courses frontend without token in final URL
+    const redirectUrl = `${config.clientCoursesUrl}/courses?token=${token}`;
+    res.redirect(redirectUrl);
 
-    // ✅ Redirect to frontend courses page without token in URL
-    res.redirect("https://courses.bipinkumar.me/courses");
   } catch (err) {
     console.error(err);
     res.status(500).send("Verification failed");
   }
 };
-
