@@ -57,9 +57,14 @@ app.get("/api/student-courses", (req, res) => {
   }
 });
 
-// Root route
+// ✅ Serve courses.html when hitting root
 app.get("/", (req, res) => {
-  res.send("🚀 Magic Link Backend Running...");
+  res.sendFile(path.join(path.resolve(), "public", "courses.html"));
+});
+
+// ✅ Optionally also serve /courses
+app.get("/courses", (req, res) => {
+  res.sendFile(path.join(path.resolve(), "public", "courses.html"));
 });
 
 app.listen(PORT, () => {
