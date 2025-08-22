@@ -29,7 +29,6 @@ export const sendMagicLink = async (req, res) => {
   }
 };
 
-
 export const verifyMagicLink = (req, res) => {
   try {
     const { token } = req.query;
@@ -38,10 +37,18 @@ export const verifyMagicLink = (req, res) => {
     const decoded = verifyToken(token);
     if (!decoded) return res.status(401).send("Invalid or expired token");
 
-    // Redirect to main website courses page with token
-    res.redirect(`https://bipinkumar.me/courses?token=${token}`);
+    // ✅ Set HTTP-only cookie
+    res.cookie("auth_token", token, {
+      httpOnly: true,
+      secure: true, // true in production (HTTPS)
+      maxAge: 15 * 60 * 1000 // 15 minutes
+    });
+
+    // ✅ Redirect to frontend courses page without token in URL
+    res.redirect("https://bipinkumar.me/courses");
   } catch (err) {
     console.error(err);
     res.status(500).send("Verification failed");
   }
 };
+
