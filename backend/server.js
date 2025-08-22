@@ -9,6 +9,12 @@ import { verifyToken } from "./src/utils/jwt.js"; // ✅ static import
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// ✅ CORS Middleware (must be before routes)
+app.use(cors({
+  origin: "https://bipinkumar.me",  // your frontend domain
+  credentials: true
+}));
+
 // Middlewares
 app.use(cors());
 app.use(bodyParser.json());
