@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bipin Kumar - DSA & System Design Course</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="nav-item" onclick="showTab(event, 'bipin')">About Bipin</div>
+    <div class="nav-item active" onclick="showTab(event, 'courses')">Courses</div>
+    <div class="nav-item" onclick="showTab(event, 'studentDashboard')">Student Dashboard</div>
+  </div>
+
+  <!-- Tabs -->
+  <div id="bipin" class="container" style="display:none;"></div>
+  <div id="courses" class="container" style="display:none;"></div>
+  <div id="studentDashboard" class="container" style="display:none;"></div>
+
+  <!-- Tab switching and dynamic loading -->
+  <script>
+    function showTab(event, tabId) {
+      document.querySelectorAll('.container').forEach(tab => tab.style.display = 'none');
+      const container = document.getElementById(tabId);
+      container.style.display = 'block';
+      document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // Load tab content dynamically
+      if (!container.dataset.loaded) {
+        fetch(`tabs/${tabId}.html`)
+          .then(res => res.text())
+          .then(html => {
+            container.innerHTML = html;
+            container.dataset.loaded = "true"; // mark as loaded
+          })
+          .catch(err => container.innerHTML = "<p style='color:red; text-align:center;'>Failed to load content.</p>");
+      }
+    }
+
+    // Show default tab on load
+    window.onload = () => {
+      showTab({ target: document.querySelector('.nav-item.active') }, 'courses');
+    };
+  </script>
+</body>
+
+</html>
