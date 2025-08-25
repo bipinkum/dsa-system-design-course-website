@@ -19,7 +19,7 @@
   <script>
     const coursesContainer = document.getElementById("courses");
 
-    // Extract token from URL
+    // ✅ Extract token from URL
     const urlParams = new URLSearchParams(window.location.search);
     const tokenFromUrl = urlParams.get("token");
 
@@ -34,7 +34,7 @@
     if (!authToken) {
       coursesContainer.innerHTML = "<p style='color:red;'>You are not logged in. Please use your magic link.</p>";
     } else {
-      // Fetch courses with signed CloudFront URLs
+      // ✅ Fetch courses from backend
       fetch("https://dsa-system-design-course-website.onrender.com/api/student-courses", {
         headers: { "Authorization": `Bearer ${authToken}` }
       })
