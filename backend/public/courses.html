@@ -19,12 +19,11 @@
   <script>
     const coursesContainer = document.getElementById("courses");
 
-    // Extract token from URL
+    // ✅ Extract token from URL
     const urlParams = new URLSearchParams(window.location.search);
     const tokenFromUrl = urlParams.get("token");
 
     if (tokenFromUrl) {
-      // Save token in sessionStorage and remove from URL
       sessionStorage.setItem("auth_token", tokenFromUrl);
       window.history.replaceState({}, document.title, "/courses");
     }
@@ -34,10 +33,8 @@
     if (!authToken) {
       coursesContainer.innerHTML = "<p style='color:red;'>You are not logged in. Please use your magic link.</p>";
     } else {
-      // Fetch courses from backend
-      fetch("/api/student-courses", {
-        headers: { "Authorization": `Bearer ${authToken}` },
-        credentials: "include" // important to send cookies if using them
+      fetch("https://dsa-system-design-course-website.onrender.com/api/student-courses", {
+        headers: { "Authorization": `Bearer ${authToken}` }
       })
       .then(res => res.json())
       .then(data => {
@@ -48,7 +45,9 @@
             div.className = "course-card";
             div.innerHTML = `
               <h2>${course.name}</h2>
-              <video src="${course.videoUrl}" controls></video>
+              <video controls controlsList="nodownload" oncontextmenu="return false;">
+                <source src="${course.videoUrl}" type="video/mp4">
+              </video>
             `;
             coursesContainer.appendChild(div);
           });
