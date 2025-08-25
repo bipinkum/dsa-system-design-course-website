@@ -1,31 +1,25 @@
 import express from "express";
-import path from "path"; 
+import path from "path";
 import { fileURLToPath } from "url";
+import fs from "fs";
 import bodyParser from "body-parser";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import fs from "fs";
-import { Signer } from "aws-sdk/clients/cloudfront";
 
 import authRoutes from "./src/auth/authRoutes.js";
 import { verifyToken } from "./src/utils/jwt.js";
+import { getSignedUrl } from "@aws-sdk/cloudfront-signer";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// ✅ Read CloudFront Private Key
-const privateKeyPath = path.resolve(process.env.PRIVATE_KEY_PATH);
-const privateKey = fs.readFileSync(privateKeyPath, "utf-8");
+// Read private key from env path
+const privateKey = fs.readFileSync(process.env.PRIVATE_KEY_PATH, "utf8");
 const keyPairId = process.env.CLOUDFRONT_KEY_PAIR_ID;
-
-// ✅ Helper to generate signed CloudFront URL
-function getSignedUrl(url) {
-  const signer = new Signer(keyPairId, privateKey);
-  const expires = Math.floor(Date.now() / 1000) + 3600; // 1 hour expiry
-  return signer.getSignedUrl({ url, expires });
-}
+const distributionDomain = process.env.CLOUDFRONT_DOMAIN; // e.g. d12345.cloudfront.net
 
 // ✅ CORS Middleware
 app.use(
@@ -39,35 +33,37 @@ app.use(
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-// Serve static frontend files
-app.use(express.static(path.join(path.resolve(), "public")));
+// Serve static files
+app.use(express.static(path.join(__dirname, "public")));
 
-// Auth routes
+// Routes
 app.use("/auth", authRoutes);
 
 // ✅ Protected API for student courses
-app.get("/api/student-courses", (req, res) => {
-  const authHeader = req.headers.authorization;
-  if (!authHeader) return res.status(401).json({ error: "Not authenticated" });
-
-  const token = authHeader.split(" ")[1];
-  if (!token) return res.status(401).json({ error: "Token missing" });
+app.get("/api/student-courses", async (req, res) => {
+  const token = req.cookies.auth_token || req.headers.authorization?.split(" ")[1];
+  if (!token) return res.status(401).json({ error: "Not authenticated" });
 
   try {
     const decoded = verifyToken(token);
     if (!decoded) return res.status(401).json({ error: "Invalid or expired token" });
 
-    // Courses with signed CloudFront URLs
-    const courses = [
-      {
-        name: "DSA Course",
-        videoUrl: getSignedUrl("https://d2akmzsrq67og8.cloudfront.net/DSA/video1.mp4"),
-      },
-      {
-        name: "System Design Course",
-        videoUrl: getSignedUrl("https://d2akmzsrq67og8.cloudfront.net/DSA/video2.mp4"),
-      },
+    // Example courses (file paths inside CloudFront)
+    const coursesList = [
+      { name: "DSA Course", path: "DSA/video1.mp4" },
+      { name: "System Design Course", path: "SystemDesign/video1.mp4" },
     ];
+
+    // Generate signed URLs dynamically
+    const courses = coursesList.map(course => {
+      const signedUrl = getSignedUrl({
+        url: `https://${distributionDomain}/${course.path}`,
+        keyPairId,
+        privateKey,
+        dateLessThan: new Date(Date.now() + 60 * 60 * 1000), // 1 hour expiry
+      });
+      return { name: course.name, videoUrl: signedUrl };
+    });
 
     res.json({ courses });
   } catch (err) {
@@ -76,11 +72,8 @@ app.get("/api/student-courses", (req, res) => {
   }
 });
 
-// ✅ Serve courses page
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "courses.html"));
-});
-app.get("/courses", (req, res) => {
+// Serve courses page
+app.get(["/", "/courses"], (req, res) => {
   res.sendFile(path.join(__dirname, "public", "courses.html"));
 });
 
