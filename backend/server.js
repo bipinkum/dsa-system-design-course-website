@@ -50,8 +50,8 @@ app.get("/api/student-courses", async (req, res) => {
 
     // Example courses (file paths inside CloudFront)
     const coursesList = [
-      { name: "DSA Course", path: "DSA/video1.mp4" },
-      { name: "System Design Course", path: "SystemDesign/video1.mp4" },
+      { name: "DSA Course", path: "DSA/video1759923415.mp4" },
+      { name: "System Design Course", path: "DSA/video1759923415.mp4" },
     ];
 
     // Generate signed URLs dynamically
