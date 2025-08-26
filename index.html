@@ -2,541 +2,530 @@
 
 <html lang="en">
 
-  
+
 
 <head>
 
-<meta charset="UTF-8" />
+    <meta charset="UTF-8" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Bipin Kumar - DSA & System Design Course</title>
+    <title>Bipin Kumar - DSA & System Design Course</title>
 
-<style>
+    <style>
+        body {
 
-body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
 
-margin: 0;
+            background-color: #f5f7fa;
 
-background-color: #f5f7fa;
+            color: #222;
 
-color: #222;
+            line-height: 1.6;
 
-line-height: 1.6;
+        }
 
-}
 
-  
 
-.navbar {
+        .navbar {
 
-display: flex;
+            display: flex;
 
-justify-content: center;
+            justify-content: center;
 
-padding: 20px 0;
+            padding: 20px 0;
 
-background-color: white;
+            background-color: white;
 
-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 
-position: fixed;
+            position: fixed;
 
-width: 100%;
+            width: 100%;
 
-top: 0;
+            top: 0;
 
-z-index: 100;
+            z-index: 100;
 
-}
+        }
 
-  
 
-.nav-item {
 
-margin: 0 30px;
+        .nav-item {
 
-font-size: 20px;
+            margin: 0 30px;
 
-font-weight: bold;
+            font-size: 20px;
 
-cursor: pointer;
+            font-weight: bold;
 
-color: #333;
+            cursor: pointer;
 
-transition: color 0.3s ease;
+            color: #333;
 
-}
+            transition: color 0.3s ease;
 
-  
+        }
 
-.nav-item:hover,
 
-.nav-item.active {
 
-color: #d9534f;
+        .nav-item:hover,
 
-}
+        .nav-item.active {
 
-  
+            color: #d9534f;
 
-.container {
+        }
 
-padding-top: 100px;
 
-text-align: center;
 
-}
+        .container {
 
-  
+            padding-top: 100px;
 
-.header {
+            text-align: center;
 
-font-size: 36px;
+        }
 
-font-weight: 700;
 
-margin-bottom: 10px;
 
-}
+        .header {
 
-  
+            font-size: 36px;
 
-.subheader {
+            font-weight: 700;
 
-font-size: 20px;
+            margin-bottom: 10px;
 
-color: #666;
+        }
 
-margin-bottom: 50px;
 
-}
 
-  
+        .subheader {
 
-.course-container {
+            font-size: 20px;
 
-display: flex;
+            color: #666;
 
-justify-content: center;
+            margin-bottom: 50px;
 
-gap: 30px;
+        }
 
-flex-wrap: wrap;
 
-padding: 30px;
 
-}
+        .course-container {
 
-  
+            display: flex;
 
-.course-card {
+            justify-content: center;
 
-background: white;
+            gap: 30px;
 
-padding: 30px;
+            flex-wrap: wrap;
 
-width: 360px;
+            padding: 30px;
 
-box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        }
 
-border-radius: 15px;
 
-text-align: left;
 
-transition: transform 0.2s ease, box-shadow 0.2s ease;
+        .course-card {
 
-}
+            background: white;
 
-  
+            padding: 30px;
 
-.course-card:hover {
+            width: 360px;
 
-transform: translateY(-5px);
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
 
-box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.15);
+            border-radius: 15px;
 
-}
+            text-align: left;
 
-  
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-.course-card h2 {
+        }
 
-font-size: 24px;
 
-margin-bottom: 15px;
 
-}
+        .course-card:hover {
 
-  
+            transform: translateY(-5px);
 
-.course-card p {
+            box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.15);
 
-font-size: 18px;
+        }
 
-color: #444;
 
-}
 
-  
+        .course-card h2 {
 
-.details-button {
+            font-size: 24px;
 
-display: inline-block;
+            margin-bottom: 15px;
 
-margin-top: 15px;
+        }
 
-padding: 10px 20px;
 
-background: #d9534f;
 
-color: white;
+        .course-card p {
 
-text-decoration: none;
+            font-size: 18px;
 
-border-radius: 6px;
+            color: #444;
 
-font-size: 16px;
+        }
 
-}
 
-  
 
-.intro-container {
+        .details-button {
 
-display: flex;
+            display: inline-block;
 
-justify-content: center;
+            margin-top: 15px;
 
-align-items: center;
+            padding: 10px 20px;
 
-gap: 40px;
+            background: #d9534f;
 
-padding: 60px;
+            color: white;
 
-background: white;
+            text-decoration: none;
 
-flex-wrap: wrap;
+            border-radius: 6px;
 
-}
+            font-size: 16px;
 
-  
+        }
 
-.profile-pic {
 
-width: 400px;
 
-height: 400px;
+        .intro-container {
 
-border-radius: 100%;
+            display: flex;
 
-object-fit: cover;
+            justify-content: center;
 
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            align-items: center;
 
-}
+            gap: 40px;
 
-  
+            padding: 60px;
 
-.intro-text {
+            background: white;
 
-max-width: 600px;
+            flex-wrap: wrap;
 
-text-align: left;
+        }
 
-font-size: 18px;
 
-}
 
-  
+        .profile-pic {
 
-.intro-text h2 {
+            width: 400px;
 
-font-size: 30px;
+            height: 400px;
 
-margin-bottom: 10px;
+            border-radius: 100%;
 
-}
+            object-fit: cover;
 
-  
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 
-.intro-text h3 {
+        }
 
-font-size: 22px;
 
-color: #d9534f;
 
-margin-bottom: 20px;
+        .intro-text {
 
-font-style: italic;
+            max-width: 600px;
 
-}
+            text-align: left;
 
-</style> <!-- Google tag (gtag.js) -->
+            font-size: 18px;
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVZ9VG7YQ"></script>
+        }
 
-<script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-5HVZ9VG7YQ'); </script>
+
+
+        .intro-text h2 {
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+
+        .intro-text h3 {
+
+            font-size: 22px;
+
+            color: #d9534f;
+
+            margin-bottom: 20px;
+
+            font-style: italic;
+
+        }
+    </style> <!-- Google tag (gtag.js) -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVZ9VG7YQ"></script>
+
+    <script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-5HVZ9VG7YQ'); </script>
 
 </head>
 
-  
+
 
 <body>
 
-<div class="navbar">
+    <div class="navbar">
 
-<div class="nav-item" onclick="showTab(event, 'bipin')">Bipin Kumar</div>
+        <div class="nav-item" onclick="showTab(event, 'bipin')">Bipin Kumar</div>
 
-<div class="nav-item active" onclick="showTab(event, 'courses')">Courses</div>
+        <div class="nav-item active" onclick="showTab(event, 'courses')">Courses</div>
 
-<!-- <div class="nav-item" onclick="showTab(event, 'masterclass')">Masterclass</div> -->
+        <!-- <div class="nav-item" onclick="showTab(event, 'masterclass')">Masterclass</div> -->
 
-<div class="nav-item" onclick="showTab(event, 'teaching')">Teaching Style</div>
+        <div class="nav-item" onclick="showTab(event, 'teaching')">Teaching Style</div>
 
-<div class="nav-item" onclick="showTab(event, 'payment')">Payment</div>
+        <div class="nav-item" onclick="showTab(event, 'payment')">Payment</div>
 
-<div class="nav-item" onclick="showTab(event,'studentDashboard')">Student Dashboard</div>
+        <div class="nav-item" onclick="showTab(event,'studentDashboard')">Student Dashboard</div>
 
-</div>
+    </div>
 
-<div id="bipin" class="container" style="display: none;">
+    <div id="bipin" class="container" style="display: none;">
 
-<div class="intro-container"> <img class="profile-pic" src="bipin.jpeg" alt="Bipin Kumar" />
+        <div class="intro-container"> <img class="profile-pic" src="bipin.jpeg" alt="Bipin Kumar" />
 
-<div class="intro-text">
+            <div class="intro-text">
 
-<h2 style="display: flex; align-items: center; gap: 15px;"> Hey, I am Bipin <a
+                <h2 style="display: flex; align-items: center; gap: 15px;"> Hey, I am Bipin <a
+                        href="https://www.linkedin.com/in/bipin-kumar-4287a237/" target="_blank"
+                        style="font-size: 16px; color: #0077b5; text-decoration: none;"> 🔗 LinkedIn </a> </h2>
 
-href="https://www.linkedin.com/in/bipin-kumar-4287a237/" target="_blank"
+                <h3>Mentor, Motivator, Problem-Solver & Technology Explorer</h3>
 
-style="font-size: 16px; color: #0077b5; text-decoration: none;"> 🔗 LinkedIn </a> </h2>
+                <p>I am a Senior Principal Software Engineer and an Engineering Leader, passionate about solving complex
 
-<h3>Mentor, Motivator, Problem-Solver & Technology Explorer</h3>
+                    problems by breaking them down into simple, actionable steps. I’ve had the opportunity to work on
+                    large-scale
 
-<p>I am a Senior Principal Software Engineer and an Engineering Leader, passionate about solving complex
+                    microservices applications deployed on modern cloud platforms like Oracle Cloud and AWS.</p>
 
-problems by breaking them down into simple, actionable steps. I’ve had the opportunity to work on large-scale
+                <p>With over 18 years of experience, I’ve led the transformation of monolithic systems into scalable,
 
-microservices applications deployed on modern cloud platforms like Oracle Cloud and AWS.</p>
+                    event-driven microservices using diverse technology stacks. I’ve architected several scalable,
+                    performant, and
 
-<p>With over 18 years of experience, I’ve led the transformation of monolithic systems into scalable,
+                    reliable solutions across industries.</p>
 
-event-driven microservices using diverse technology stacks. I’ve architected several scalable, performant, and
+                <blockquote
+                    style="font-size: 18px; font-weight: 500; color: #444; border-left: 5px solid #d9534f; margin: 30px 0; padding-left: 20px;">
 
-reliable solutions across industries.</p>
+                    Join my courses to not just learn the theory, but to understand how real-world systems are actually
+                    built.
 
-<blockquote
+                </blockquote>
 
-style="font-size: 18px; font-weight: 500; color: #444; border-left: 5px solid #d9534f; margin: 30px 0; padding-left: 20px;">
+            </div>
 
-Join my courses to not just learn the theory, but to understand how real-world systems are actually built.
+        </div>
 
-</blockquote>
+    </div>
 
-</div>
+    <div id="courses" class="container">
 
-</div>
+        <div class="course-container">
 
-</div>
+            <div class="course-card">
 
-<div id="courses" class="container">
+                <h2>Data Structure and Algorithm</h2>
 
-<div class="course-container">
+                <p>A structured, mentor-led course to master Data Structures & Algorithms — from fundamentals to
+                    advanced
 
-<div class="course-card">
+                    concepts — with a clear focus on cracking coding interviews.</p>
 
-<h2>Data Structure and Algorithm</h2>
+                <p style="color: #333; margin: 8px 0;"><strong>📅 Next Batch:</strong> Starts 1st September 2025</p>
 
-<p>A structured, mentor-led course to master Data Structures & Algorithms — from fundamentals to advanced
+                <p style="color: #333;"><strong>⏳ Duration:</strong> 20 Weeks</p> <a
+                    href="https://github.com/bipinkum/DSA-Course" target="_blank" class="details-button">Details →</a>
 
-concepts — with a clear focus on cracking coding interviews.</p>
+            </div>
 
-<p style="color: #333; margin: 8px 0;"><strong>📅 Next Batch:</strong> Starts 1st September 2025</p>
+            <div class="course-card">
 
-<p style="color: #333;"><strong>⏳ Duration:</strong> 20 Weeks</p> <a
+                <h2>System Design</h2>
 
-href="https://github.com/bipinkum/DSA-Course" target="_blank" class="details-button">Details →</a>
+                <p>A mentor-guided course to master scalable, fault-tolerant system design — with real-world use cases
+                    and
 
-</div>
+                    strategies to crack system design interviews.</p>
 
-<div class="course-card">
+                <p style="color: #333; margin: 8px 0;"><strong>📅 Next Batch:</strong> Starts 1st September 2025</p>
 
-<h2>System Design</h2>
+                <p style="color: #333;"><strong>⏳ Duration:</strong> 20 Weeks</p> <a
+                    href="https://github.com/bipinkum/System-Design-Course" target="_blank"
+                    class="details-button">Details →</a>
 
-<p>A mentor-guided course to master scalable, fault-tolerant system design — with real-world use cases and
+            </div>
 
-strategies to crack system design interviews.</p>
+        </div>
 
-<p style="color: #333; margin: 8px 0;"><strong>📅 Next Batch:</strong> Starts 1st September 2025</p>
+    </div>
 
-<p style="color: #333;"><strong>⏳ Duration:</strong> 20 Weeks</p> <a
+    <!-- <div id="masterclass" class="container" style="display: none;"> <p style="text-align: center; font-size: 15px; color: #666; margin-top: 10px;"> 🎯 This masterclass is your entry point to the full <strong>20 weeks program</strong> starting <strong>1st May 2025</strong>. </p> <iframe src="https://forms.gle/EthuefZrJEQcyXxs8"></iframe> </div> -->
 
-href="https://github.com/bipinkum/System-Design-Course" target="_blank" class="details-button">Details →</a>
+    <div id="teaching" class="container" style="display: none;">
 
-</div>
+        <p style="color: #333; margin: 8px 0;"><strong>📅 Next Batch:</strong> Starts 1st September 2025</p>
 
-</div>
+        <p style="color: #333;"><strong>⏳ Duration:</strong> 20 Weeks</p>
 
-</div>
+        <div class="course-container">
 
-<!-- <div id="masterclass" class="container" style="display: none;"> <p style="text-align: center; font-size: 15px; color: #666; margin-top: 10px;"> 🎯 This masterclass is your entry point to the full <strong>20 weeks program</strong> starting <strong>1st May 2025</strong>. </p> <iframe src="https://forms.gle/EthuefZrJEQcyXxs8"></iframe> </div> -->
+            <div class="course-card">
 
-<div id="teaching" class="container" style="display: none;">
+                <h2>Video 1: DSA Concept Simplified</h2>
 
-<p style="color: #333; margin: 8px 0;"><strong>📅 Next Batch:</strong> Starts 1st September 2025</p>
+                <p>Watch how Bipin explains complex Data Structures using real-world analogies.</p> <a
+                    href="https://d2akmzsrq67og8.cloudfront.net/DSA/video1759923415.mp4" target="_blank"
+                    class="details-button">Watch Video →</a>
 
-<p style="color: #333;"><strong>⏳ Duration:</strong> 20 Weeks</p>
+            </div>
 
-<div class="course-container">
+            <div class="course-card">
 
-<div class="course-card">
+                <h2>Video 2: Real-World System Design</h2>
 
-<h2>Video 1: DSA Concept Simplified</h2>
+                <p>Get a sneak peek of how system design is taught using intuitive examples and diagrams.</p> <a
+                    href="https://drive.google.com/file/d/VIDEO2_LINK/view" target="_blank" class="details-button">Watch
+                    Video
 
-<p>Watch how Bipin explains complex Data Structures using real-world analogies.</p> <a
+                    →</a>
 
-href="https://d2akmzsrq67og8.cloudfront.net/DSA/video1759923415.mp4" target="_blank"
+            </div>
 
-class="details-button">Watch Video →</a>
+        </div>
 
-</div>
+    </div> <!-- Payment Tab with Razorpay Hosted Link -->
 
-<div class="course-card">
+    <div id="payment" class="container" style="display: none;">
 
-<h2>Video 2: Real-World System Design</h2>
+        <div
+            style="max-width: 700px; margin: 60px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); text-align: center;">
 
-<p>Get a sneak peek of how system design is taught using intuitive examples and diagrams.</p> <a
+            <h2 style="color: #d9534f; font-size: 28px; margin-bottom: 20px;">Pay for the Course</h2>
 
-href="https://drive.google.com/file/d/VIDEO2_LINK/view" target="_blank" class="details-button">Watch Video
+            <p style="font-size: 18px; color: #333;">Click the button below to pay ₹35,000 securely:</p>
 
-→</a>
+            <!-- Razorpay Hosted Payment Page Link --> <a href="https://rzp.io/rzp/fhbHRyTK" target="_blank"
+                class="details-button" style="font-size: 18px; padding: 12px 30px;"> Pay Now → ₹35,000 </a>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
-</div> <!-- Payment Tab with Razorpay Hosted Link -->
 
-<div id="payment" class="container" style="display: none;">
 
-<div
-
-style="max-width: 700px; margin: 60px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); text-align: center;">
-
-<h2 style="color: #d9534f; font-size: 28px; margin-bottom: 20px;">Pay for the Course</h2>
-
-<p style="font-size: 18px; color: #333;">Click the button below to pay ₹35,000 securely:</p>
-
-<!-- Razorpay Hosted Payment Page Link --> <a href="https://rzp.io/rzp/fhbHRyTK" target="_blank"
-
-class="details-button" style="font-size: 18px; padding: 12px 30px;"> Pay Now → ₹35,000 </a>
-
-</div>
-
-</div>
-
-  
-
-<!-- Student Dashboard with magic link form -->
-
+   <!-- Student Dashboard with magic link form -->
 <div id="studentDashboard" class="container" style="display:none;">
+  <div style="max-width:700px; margin:40px auto; background:white; padding:40px; border-radius:15px; box-shadow:0 6px 20px rgba(0,0,0,0.1); text-align:center;">
+    
+    <h2 style="color:#d9534f; font-size:28px; margin-bottom:15px;">🎓 Student Dashboard</h2>
+    <p style="font-size:18px; color:#444; margin-bottom:25px;">
+      Welcome to the Student Dashboard.  
+      <br/>This is your secure portal to access <strong>recorded course sessions</strong>.  
+      Only paid students will receive the <span style="color:#d9534f;">magic login link</span> in their inbox.
+    </p>
 
-<h2>Student Dashboard</h2>
+    <div style="text-align:left; margin-bottom:30px; font-size:16px; color:#555;">
+      <ol style="line-height:1.8;">
+        <li>Enter your registered email address below.</li>
+        <li>You’ll receive a one-time <strong>magic link</strong> in your inbox.</li>
+        <li>Click the link to watch your purchased course recordings securely.</li>
+      </ol>
+    </div>
 
-  
+    <!-- Magic Link Form -->
+    <input type="email" id="studentEmail" placeholder="Enter your registered email" 
+      style="width:100%; padding:14px; font-size:16px; border:1px solid #ccc; border-radius:8px; margin-bottom:15px;" />
 
-<div id="magic-login-section">
+    <button id="getMagicLinkBtn" 
+      style="width:100%; padding:14px; background:#d9534f; color:white; border:none; font-size:18px; font-weight:600; border-radius:8px; cursor:pointer;">
+      Get Magic Link →
+    </button>
 
-<input type="email" id="studentEmail" placeholder="Enter your email" />
-
-<button id="getMagicLinkBtn">Get Magic Link</button>
-
-<div id="loginStatus"></div>
-
+    <div id="loginStatus" style="margin-top:20px; font-size:16px; font-weight:500;"></div>
+  </div>
 </div>
 
-  
 
-</div>
+    <script> 
+    function showTab(event, tabId) 
+    { 
+        document.querySelectorAll('.container').forEach(tab => { tab.style.display = 'none'; }); 
+        document.getElementById(tabId).style.display = 'block'; 
+        document.querySelectorAll('.nav-item').forEach(item => { item.classList.remove('active'); }); 
+        event.target.classList.add('active'); 
+    } // Show default tab window.onload = function () { showTab({target: document.querySelector('.nav-item.active')}, 'courses'); };
 
-  
-  
+    </script>
 
-<script> function showTab(event, tabId) { document.querySelectorAll('.container').forEach(tab => { tab.style.display = 'none'; }); document.getElementById(tabId).style.display = 'block'; document.querySelectorAll('.nav-item').forEach(item => { item.classList.remove('active'); }); event.target.classList.add('active'); } // Show default tab window.onload = function () { showTab({target: document.querySelector('.nav-item.active')}, 'courses'); };
+    <script>
 
-  
+        function showTab(event, tabId) {
+            document.querySelectorAll('.container').forEach(tab => tab.style.display = 'none');
+            document.getElementById(tabId).style.display = 'block';
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            event.target.classList.add('active');
+        }
 
-</script>
+        // Magic link login
 
-  
+        const emailInput = document.getElementById('studentEmail');
+        const loginStatus = document.getElementById('loginStatus');
+        const getMagicLinkBtn = document.getElementById('getMagicLinkBtn');
+        getMagicLinkBtn.addEventListener('click', async () => {
+            const email = emailInput.value.trim();
 
-<script>
+            if (!email) { loginStatus.style.color = 'red'; loginStatus.innerText = 'Please enter your email'; return; }
 
-function showTab(event, tabId) {
+            loginStatus.style.color = 'black';
+            loginStatus.innerText = 'Sending magic link...';
+            try {
 
-document.querySelectorAll('.container').forEach(tab => tab.style.display='none');
+                const res = await fetch('https://dsa-system-design-course-website.onrender.com/auth/login', {
 
-document.getElementById(tabId).style.display='block';
+                    method: 'POST',
 
-document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+                    headers: { 'Content-Type': 'application/json' },
 
-event.target.classList.add('active');
+                    body: JSON.stringify({ email })
 
-}
+                });
 
-// Magic link login
+                const data = await res.json();
 
-const emailInput = document.getElementById('studentEmail');
+                if (res.ok) { loginStatus.style.color = 'green'; loginStatus.innerText = '✅ Magic link sent! Check your email.'; }
 
-const loginStatus = document.getElementById('loginStatus');
+                else { loginStatus.style.color = 'red'; loginStatus.innerText = `❌ ${data.error}`; }
 
-const getMagicLinkBtn = document.getElementById('getMagicLinkBtn');
+            } catch (err) { console.error(err); loginStatus.style.color = 'red'; loginStatus.innerText = '❌ Failed to send magic link.'; }
 
-  
+        });
 
-getMagicLinkBtn.addEventListener('click', async () => {
-
-const email = emailInput.value.trim();
-
-if(!email){ loginStatus.style.color='red'; loginStatus.innerText='Please enter your email'; return; }
-
-  
-
-loginStatus.style.color='black';
-
-loginStatus.innerText='Sending magic link...';
-
-  
-
-try{
-
-const res = await fetch('https://dsa-system-design-course-website.onrender.com/auth/login',{
-
-method:'POST',
-
-headers:{'Content-Type':'application/json'},
-
-body: JSON.stringify({email})
-
-});
-
-const data = await res.json();
-
-if(res.ok){ loginStatus.style.color='green'; loginStatus.innerText='✅ Magic link sent! Check your email.'; }
-
-else{ loginStatus.style.color='red'; loginStatus.innerText=`❌ ${data.error}`; }
-
-} catch(err){ console.error(err); loginStatus.style.color='red'; loginStatus.innerText='❌ Failed to send magic link.'; }
-
-});
-
-</script>
+    </script>
 
 </body>
 
-  
+
 
 </html>
