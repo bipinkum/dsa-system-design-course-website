@@ -64,16 +64,16 @@
       .card, .nav-item { transition:none; }
     }
 
-
-    /* Dashboard (login page) */
+    /* Dashboard (login page) – no background, full-width */
 .dashboard-grid{
   display:grid; grid-template-columns: 1.2fr 1fr; gap:24px; align-items:start;
-  background:var(--card); border-radius:12px; box-shadow:var(--shadow); padding:24px; border:1px solid rgba(0,0,0,.06);
+  padding:0; background:transparent; border:none; box-shadow:none;
 }
 @media (max-width: 900px){ .dashboard-grid{ grid-template-columns: 1fr; } }
-.dashboard-title{ font-size:28px; font-weight:800; margin:0 0 8px; }
-.dashboard-copy{ color:var(--muted); margin:0; }
-.dashboard-copy a{ color:var(--brand); text-decoration:underline; }
+
+.trouble-block{ padding:0; background:transparent; border:none; }
+.trouble-title{ font-size:20px; font-weight:800; margin:0 0 8px; }
+.trouble-list{ margin:6px 0 0 18px; color:var(--muted); }
 
 .form-grid{
   display:grid; grid-template-columns: 110px 1fr auto; gap:10px 12px; align-items:center;
@@ -173,16 +173,14 @@
 
 <section id="studentDashboard" class="container" role="region" aria-labelledby="tab-studentDashboard">
   <div class="dashboard-grid">
-    <!-- Left: Title + copy -->
     <div>
-      <h2 class="dashboard-title">Login</h2>
+      <h2 class="dashboard-title" style="margin:0 0 8px;">Login</h2>
       <p class="dashboard-copy">
         You can login if you have enrolled in any of my
         <a href="#courses">courses</a>.
       </p>
     </div>
 
-    <!-- Right: Email form -->
     <div>
       <div class="form-grid">
         <label for="studentEmail" class="label-strong">Email</label>
@@ -197,16 +195,15 @@
 
   <hr class="hr"/>
 
-  <div class="card" style="padding:18px;">
+  <div class="trouble-block">
     <h3 class="trouble-title">Troubleshooting</h3>
     <ul class="trouble-list">
-      <li>If you do not find email in your inbox, please check your Spam, Marketing, and Promotions folder. For some non‑Google/corporate emails, the server may block automated emails; check mailbox settings.</li>
-      <li>Your session will expire within a day.</li>
-      <li>Your session will logout if you try to access from multiple devices.</li>
+      - If you do not find email in your inbox, check Spam/Marketing/Promotions. Corporate mailboxes may block automated emails.
+      - Your session will expire within a day.
+      - Your session will logout if you try to access from multiple devices.
     </ul>
     <p class="dashboard-copy contact" style="margin-top:12px;">
-      If you are facing any other issues, drop me an email with details at
-      <a href="mailto:arpit.masterclass@gmail.com">arpit.masterclass@gmail.com</a>.
+      For issues, email <a href="mailto:bipin.masterclass@gmail.com">bipin.masterclass@gmail.com</a>.
     </p>
   </div>
 </section>
