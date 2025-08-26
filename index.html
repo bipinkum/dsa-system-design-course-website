@@ -3,69 +3,94 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Bipin Kumar — Become a better engineer</title>
-  <meta name="description" content="No‑fluff, mentor‑led programs in DSA and System Design. Learn the principles, build the intuition, and ship with confidence."/>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='24' fill='%232563eb'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='72' fill='white'%3EB%3C/text%3E%3C/svg%3E"/>
+  <title>Bipin Kumar — DSA & System Design Programs</title>
+  <meta name="description" content="Mentor-led DSA and System Design programs with hands-on practice and interview preparation."/>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='24' fill='%232563eb'/%3E%3Ctext x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='72' fill='white'%3EB%3C/text%3E%3C/svg%3E"/>
 
   <style>
     :root{
-      --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#475569; --border:#e2e8f0;
+      --bg:#f7f8fb; --card:#fff; --text:#0f172a; --muted:#475569; --border:#e5e7eb;
       --brand:#2563eb; --brand-600:#1d4ed8; --brand-50:#eff6ff; --success:#16a34a; --danger:#dc2626;
-      --radius:12px; --shadow:0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(15,23,42,.06);
+      --radius:12px; --shadow:0 2px 10px rgba(15,23,42,.06), 0 1px 3px rgba(15,23,42,.06);
     }
     @media (prefers-color-scheme: dark){
       :root{ --bg:#0b1220; --card:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --border:#1f2937; --brand:#60a5fa; --brand-600:#3b82f6; --brand-50:#0b1220; }
     }
-    *{ box-sizing: border-box; }
-    html, body{ height:100%; }
-    body{ margin:0; font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial; background:var(--bg); color:var(--text); line-height:1.65; }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0; font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+      background:var(--bg); color:var(--text); line-height:1.6;
+    }
 
     /* Navbar */
-    .navbar{ position:sticky; top:0; z-index:100; background:var(--card); border-bottom:1px solid var(--border); }
-    .nav-inner{ max-width:1120px; margin:0 auto; padding:14px 16px; display:flex; align-items:center; gap:16px; }
-    .brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px; color:var(--text); text-decoration:none; }
-    .brand-badge{ display:grid; place-items:center; width:36px; height:36px; border-radius:8px; background:var(--brand); color:#fff; font-weight:800; }
+    .navbar{
+      position:sticky; top:0; z-index:100; background:var(--card); border-bottom:1px solid var(--border); box-shadow:var(--shadow);
+    }
+    .nav-inner{
+      max-width:1120px; margin:0 auto; padding:14px 16px; display:flex; align-items:center; gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px; color:var(--text);
+    }
+    .brand-badge{
+      display:grid; place-items:center; width:36px; height:36px; border-radius:8px; background:var(--brand); color:#fff; font-weight:800;
+      box-shadow:0 1px 2px rgba(0,0,0,.06);
+    }
     .nav-spacer{ flex:1; }
-    .nav-item{ border:0; background:none; color:var(--muted); font-weight:700; cursor:pointer; padding:8px 10px; border-radius:8px; }
+    .nav-item{
+      border:0; background:none; color:var(--muted); font-weight:600; cursor:pointer; padding:8px 10px; border-radius:8px;
+    }
     .nav-item:hover, .nav-item[aria-current="page"]{ color:var(--brand-600); background:var(--brand-50); }
     .nav-group{ display:flex; gap:8px; flex-wrap:wrap; }
 
     /* Layout */
     main{ padding:24px 16px; }
     .container{ max-width:1120px; margin:0 auto; }
-    .section{ margin:28px 0; }
+    .section{ margin:24px 0; }
 
-    /* Hero */
-    .hero{ background:linear-gradient(180deg, #ffffff, rgba(255,255,255,0.75)); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); padding:28px; }
-    .hero-grid{ display:grid; grid-template-columns: 1.2fr .8fr; gap:28px; }
-    @media (max-width: 920px){ .hero-grid{ grid-template-columns: 1fr; } }
-    .kicker{ color:var(--brand-600); font-weight:800; letter-spacing:.3px; margin-bottom:8px; font-size:14px; }
-    .h1{ font-size:34px; line-height:1.25; margin:0 0 8px; font-weight:900; letter-spacing:.1px; }
+    /* Hero/Intro */
+    .intro{
+      display:grid; grid-template-columns: 320px 1fr; gap:28px; background:var(--card); border:1px solid var(--border);
+      border-radius:var(--radius); padding:28px; box-shadow:var(--shadow);
+    }
+    @media (max-width: 880px){
+      .intro{ grid-template-columns: 1fr; }
+    }
+    .profile{
+      width:100%; aspect-ratio:1/1; border-radius:50%; object-fit:cover; box-shadow:0 8px 30px rgba(0,0,0,.12);
+    }
+    .kicker{ color:var(--brand-600); font-weight:700; letter-spacing:.3px; margin-bottom:6px; font-size:14px; }
+    .h1{ font-size:32px; line-height:1.25; margin:6px 0 10px; font-weight:800; letter-spacing:.2px; }
     .lead{ color:var(--muted); margin:0 0 12px; }
-    .profile{ width:100%; max-width:360px; margin-left:auto; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.12); }
-    .cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+    blockquote{
+      margin:16px 0 0; padding:12px 14px; border-left:4px solid var(--brand); background:rgba(37,99,235,.06); border-radius:8px;
+    }
 
     /* Cards */
-    .grid{ display:grid; gap:18px; grid-template-columns: repeat(3, minmax(0,1fr)); }
-    @media (max-width: 1120px){ .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
-    @media (max-width: 720px){ .grid{ grid-template-columns: 1fr; } }
-    .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow); }
+    .grid{ display:grid; gap:18px; grid-template-columns: repeat(2, minmax(0,1fr)); }
+    @media (max-width: 880px){ .grid{ grid-template-columns: 1fr; } }
+    .card{
+      background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow);
+    }
     .card h2{ margin:0 0 8px; font-size:20px; }
-    .card p{ margin:6px 0; }
-    .meta{ color:var(--muted); font-size:14px; }
-    .btn{ display:inline-block; padding:10px 14px; background:var(--brand); color:#fff; text-decoration:none; border-radius:10px; font-weight:800; letter-spacing:.2px; }
-    .btn:hover{ background:var(--brand-600); }
-    .btn.secondary{ background:transparent; color:var(--brand-600); border:1px solid var(--brand-600); }
+    .meta{ color:var(--muted); font-size:14px; margin:6px 0; }
+    .btn{
+      display:inline-block; margin-top:12px; padding:10px 14px; background:var(--brand); color:#fff; text-decoration:none; border-radius:10px;
+      font-weight:700; letter-spacing:.2px; transition:transform .08s ease, background-color .2s;
+    }
+    .btn:hover{ background:var(--brand-600); transform:translateY(-1px); }
+    .btn:focus-visible{ outline:3px solid rgba(37,99,235,.35); outline-offset:2px; }
 
     /* Forms */
     .field{ display:flex; flex-direction:column; gap:6px; margin:8px 0 2px; }
-    .input{ width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:8px; background:transparent; color:inherit; }
+    .input{
+      width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:8px; background:transparent; color:inherit;
+    }
     .status{ margin-top:8px; font-size:14px; }
     .status.ok{ color:var(--success); }
     .status.err{ color:var(--danger); }
 
-    /* Footer */
-    footer{ margin:40px 0 20px; color:var(--muted); font-size:14px; }
     .hidden{ display:none !important; }
   </style>
 
@@ -78,16 +103,16 @@
   </script>
 </head>
 <body>
-  <header class="navbar">
+  <header class="navbar" role="banner">
     <div class="nav-inner">
       <a class="brand" href="#" aria-label="Home">
         <span class="brand-badge" aria-hidden="true">BK</span>
         <span>Bipin Kumar</span>
       </a>
       <div class="nav-spacer"></div>
-      <nav class="nav-group" aria-label="Primary">
-        <button class="nav-item" data-tab="courses" aria-current="page">Programs</button>
+      <nav class="nav-group" role="navigation" aria-label="Primary">
         <button class="nav-item" data-tab="bipin">About</button>
+        <button class="nav-item" data-tab="courses" aria-current="page">Courses</button>
         <button class="nav-item" data-tab="teaching">Teaching</button>
         <button class="nav-item" data-tab="payment">Payment</button>
         <button class="nav-item" data-tab="studentDashboard">Student Dashboard</button>
@@ -96,62 +121,44 @@
   </header>
 
   <main class="container" id="content">
-    <!-- Hero -->
-    <section class="section" aria-label="Hero">
-      <div class="hero">
-        <div class="hero-grid">
-          <div>
-            <div class="kicker">No‑fluff, no‑nonsense learning</div>
-            <h1 class="h1">Become a better engineer</h1>
-            <p class="lead">Mentor‑led programs designed to build intuition, sharpen fundamentals, and help you ship reliable systems with confidence.</p>
-            <p class="lead">DSA for strong foundations. System Design for scale, availability, and clarity under constraints.</p>
-            <div class="cta">
-              <a class="btn" href="#courses">Explore Programs</a>
-              <a class="btn secondary" href="https://www.linkedin.com/in/bipin-kumar-4287a237/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
-            </div>
-          </div>
-          <img class="profile" src="bipin.jpeg" alt="Bipin Kumar" loading="lazy" decoding="async" width="360" height="360"/>
+    <!-- About -->
+    <section id="bipin" class="section hidden" role="region" aria-labelledby="tab-bipin">
+      <div class="intro">
+        <img src="bipin.jpeg" class="profile" alt="Portrait of Bipin Kumar" loading="lazy" decoding="async" width="320" height="320"/>
+        <div>
+          <div class="kicker">Mentor • Engineering Leader</div>
+          <h1 class="h1">Building real‑world systems, not just interview answers</h1>
+          <p class="lead">Senior Principal Software Engineer with 18+ years designing and shipping distributed systems on AWS and Oracle Cloud. I teach by breaking down complexity into simple, actionable steps.</p>
+          <p class="lead">From monolith-to-microservices modernization to event-driven architectures, my focus is clarity, correctness, and career outcomes.</p>
+          <blockquote>Join my programs to learn how robust systems are actually built and operated.</blockquote>
+          <p style="margin-top:10px;">
+            <a class="btn" href="https://www.linkedin.com/in/bipin-kumar-4287a237/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Programs -->
+    <!-- Courses -->
     <section id="courses" class="section" role="region" aria-labelledby="tab-courses">
       <div class="card" style="margin-bottom:16px;">
-        <h2 style="margin:0 0 4px; font-size:22px;">Programs</h2>
-        <p class="lead" style="margin:0;">Cohorts start 1 September 2025 • Duration 20 weeks</p>
+        <h1 class="h1" style="margin:0 0 4px;">Programs</h1>
+        <p class="lead" style="margin:0;">Next cohort starts 1 September 2025 • Duration 20 weeks</p>
       </div>
       <div class="grid">
         <article class="card">
-          <h2>System Design Masterclass</h2>
-          <p>Form the right intuition to design scalable, fault‑tolerant, extensible systems. Real‑world trade‑offs, diagrams, and patterns.</p>
-          <p class="meta"><strong>📅 Next Batch:</strong> 1 Sep 2025</p>
-          <p class="meta"><strong>⏳ Duration:</strong> 20 Weeks</p>
-          <a class="btn" href="https://github.com/bipinkum/System-Design-Course" target="_blank" rel="noopener noreferrer">Details →</a>
-        </article>
-        <article class="card">
-          <h2>System Design for Beginners</h2>
-          <p>Self‑paced foundation for absolute beginners to build a clear mental model of scalable and available architectures.</p>
-          <p class="meta"><strong>📅 Next Batch:</strong> 1 Sep 2025</p>
-          <p class="meta"><strong>⏳ Duration:</strong> 20 Weeks</p>
-          <a class="btn" href="https://github.com/bipinkum/System-Design-Course" target="_blank" rel="noopener noreferrer">Details →</a>
-        </article>
-        <article class="card">
           <h2>Data Structures & Algorithms</h2>
-          <p>Structured, interview‑focused path from fundamentals to advanced topics with deliberate practice and feedback.</p>
+          <p>Mentor-led, interview‑focused path from fundamentals to advanced topics with structured practice.</p>
           <p class="meta"><strong>📅 Next Batch:</strong> 1 Sep 2025</p>
           <p class="meta"><strong>⏳ Duration:</strong> 20 Weeks</p>
           <a class="btn" href="https://github.com/bipinkum/DSA-Course" target="_blank" rel="noopener noreferrer">Details →</a>
         </article>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="bipin" class="section hidden" role="region" aria-labelledby="tab-bipin">
-      <div class="card">
-        <h2 style="margin:0 0 8px; font-size:22px;">About</h2>
-        <p class="lead">Senior Principal Software Engineer with 18+ years designing and operating distributed systems on AWS and Oracle Cloud. I teach by breaking down complexity into simple, actionable steps.</p>
-        <p class="lead">My focus: clarity, correctness, and career outcomes—moving from ideas to robust, production‑grade systems.</p>
+        <article class="card">
+          <h2>System Design</h2>
+          <p>Design scalable, fault‑tolerant systems using real scenarios, trade‑offs, and diagrams.</p>
+          <p class="meta"><strong>📅 Next Batch:</strong> 1 Sep 2025</p>
+          <p class="meta"><strong>⏳ Duration:</strong> 20 Weeks</p>
+          <a class="btn" href="https://github.com/bipinkum/System-Design-Course" target="_blank" rel="noopener noreferrer">Details →</a>
+        </article>
       </div>
     </section>
 
@@ -165,7 +172,7 @@
         </article>
         <article class="card">
           <h2>Video 2: Real‑World System Design</h2>
-          <p>Design through intuitive examples and pragmatic trade‑offs.</p>
+          <p>Learn design through intuitive examples and pragmatic patterns.</p>
           <a class="btn" href="https://drive.google.com/file/d/VIDEO2_LINK/view" target="_blank" rel="noopener noreferrer">Watch Video →</a>
         </article>
       </div>
@@ -192,45 +199,17 @@
         <div id="loginStatus" class="status" role="status" aria-live="polite"></div>
       </article>
     </section>
-
-    <!-- Newsletter -->
-    <section class="section" aria-label="Newsletter">
-      <article class="card" style="display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:space-between;">
-        <div>
-          <h2 style="margin:0 0 6px; font-size:20px;">Weekly engineering notes</h2>
-          <p class="meta" style="margin:0;">Short essays on systems, trade‑offs, and real‑world patterns.</p>
-        </div>
-        <div style="display:flex; gap:10px;">
-          <a class="btn secondary" href="https://www.linkedin.com/in/bipin-kumar-4287a237/" target="_blank" rel="noopener noreferrer">Subscribe on LinkedIn</a>
-          <a class="btn" href="#" aria-disabled="true">Subscribe on Substack</a>
-        </div>
-      </article>
-    </section>
-
-    <footer class="container">
-      <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center;">
-        <div>© <span id="year"></span> Bipin Kumar</div>
-        <div class="meta" style="display:flex; gap:12px;">
-          <a href="#" class="meta" style="text-decoration:none; color:inherit;">Privacy</a>
-          <a href="#" class="meta" style="text-decoration:none; color:inherit;">Terms</a>
-          <a href="#" class="meta" style="text-decoration:none; color:inherit;">Contact</a>
-        </div>
-      </div>
-    </footer>
   </main>
 
   <script>
     (function(){
-      const yearEl = document.getElementById('year');
-      if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
-
       const tabs = document.querySelectorAll('.nav-item');
-      const sections = document.querySelectorAll('main [role="region"], main .section#courses');
+      const sections = document.querySelectorAll('main > .section');
+
       function activate(id){
-        sections.forEach(s => s.classList.toggle('hidden', s.id && s.id !== id && s.id !== 'courses'));
+        sections.forEach(s => s.classList.toggle('hidden', s.id !== id));
         tabs.forEach(t => t.setAttribute('aria-current', t.dataset.tab === id ? 'page' : 'false'));
-        if(id){ history.replaceState(null, '', '#' + id); }
-        if(id === 'courses'){ document.getElementById('courses')?.classList.remove('hidden'); }
+        history.replaceState(null, '', '#' + id);
       }
       tabs.forEach(t => t.addEventListener('click', e => activate(e.currentTarget.dataset.tab)));
       activate(location.hash?.substring(1) || 'courses');
@@ -242,15 +221,30 @@
       if(btn){
         btn.addEventListener('click', async () => {
           const value = (email?.value || '').trim();
-          if(!value){ status.textContent='Please enter your email'; status.className='status err'; email?.focus(); return; }
-          btn.disabled = true; btn.textContent = 'Sending…'; status.textContent='Sending magic link…'; status.className='status';
+          if(!value){
+            status.textContent = 'Please enter your email';
+            status.className = 'status err';
+            email?.focus();
+            return;
+          }
+          btn.disabled = true; btn.textContent = 'Sending…';
+          status.textContent = 'Sending magic link…'; status.className = 'status';
           try{
-            const res = await fetch('https://dsa-system-design-course-website.onrender.com/auth/login', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ email:value }) });
-            const ct = res.headers.get('content-type')||''; const data = ct.includes('application/json') ? await res.json() : {};
-            if(res.ok){ status.textContent='✅ Magic link sent! Check your email.'; status.className='status ok'; }
-            else{ status.textContent='❌ ' + (data.error || 'Failed to send magic link.'); status.className='status err'; }
-          }catch{ status.textContent='❌ Network error. Please try again.'; status.className='status err'; }
-          finally{ btn.disabled=false; btn.textContent='Get Magic Link'; }
+            const res = await fetch('https://dsa-system-design-course-website.onrender.com/auth/login', {
+              method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ email:value })
+            });
+            const ct = res.headers.get('content-type') || '';
+            const data = ct.includes('application/json') ? await res.json() : {};
+            if(res.ok){
+              status.textContent = '✅ Magic link sent! Check your email.'; status.className = 'status ok';
+            }else{
+              status.textContent = '❌ ' + (data.error || 'Failed to send magic link.'); status.className = 'status err';
+            }
+          }catch{
+            status.textContent = '❌ Network error. Please try again.'; status.className = 'status err';
+          }finally{
+            btn.disabled = false; btn.textContent = 'Get Magic Link';
+          }
         });
       }
     })();
