@@ -3,66 +3,95 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Bipin Kumar — DSA & System Design Course</title>
-  <meta name="description" content="Mentor-led DSA and System Design courses with real-world practice and interview prep."/>
-  <link rel="canonical" href="https://your-domain.example/"/>
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Bipin Kumar — DSA & System Design Course"/>
-  <meta property="og:description" content="Mentor-led DSA and System Design courses with real-world practice and interview prep."/>
-  <meta property="og:type" content="website"/>
+  <title>Bipin Kumar — DSA & System Design Programs</title>
+  <meta name="description" content="Mentor-led DSA and System Design programs with hands-on practice and interview preparation."/>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='24' fill='%232563eb'/%3E%3Ctext x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='72' fill='white'%3EB%3C/text%3E%3C/svg%3E"/>
 
   <style>
-    :root {
-      --brand:#d9534f; --text:#222; --muted:#666; --bg:#f5f7fa; --card:#fff; --shadow:0 2px 10px rgba(0,0,0,.1);
+    :root{
+      --bg:#f7f8fb; --card:#fff; --text:#0f172a; --muted:#475569; --border:#e5e7eb;
+      --brand:#2563eb; --brand-600:#1d4ed8; --brand-50:#eff6ff; --success:#16a34a; --danger:#dc2626;
+      --radius:12px; --shadow:0 2px 10px rgba(15,23,42,.06), 0 1px 3px rgba(15,23,42,.06);
     }
-    * { box-sizing: border-box; }
-    body {
-      margin:0; font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif; line-height:1.6; background:var(--bg); color:var(--text);
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#0b1220; --card:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --border:#1f2937; --brand:#60a5fa; --brand-600:#3b82f6; --brand-50:#0b1220; }
     }
-    nav.navbar {
-      position:fixed; top:0; left:0; right:0; z-index:100; background:#fff; box-shadow:var(--shadow);
-      display:flex; justify-content:center; gap:30px; padding:16px 12px;
-    }
-    .nav-item {
-      border:0; background:none; font:inherit; font-weight:700; font-size:18px; color:#333; cursor:pointer; padding:6px 8px;
-    }
-    .nav-item:hover, .nav-item[aria-current="page"] { color:var(--brand); }
-    main { padding-top:84px; }
-    .container { padding:24px; max-width:1200px; margin:0 auto; }
-    .header { font-size:36px; font-weight:700; margin:0 0 8px; text-align:center; }
-    .subheader { font-size:20px; color:var(--muted); text-align:center; margin:0 0 32px; }
-
-    .intro {
-      display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:32px; background:#fff; padding:40px; border-radius:12px; box-shadow:var(--shadow);
-    }
-    .profile-pic {
-      width:280px; max-width:100%; aspect-ratio:1/1; border-radius:50%; object-fit:cover; box-shadow:0 4px 15px rgba(0,0,0,.1);
-    }
-    .intro-text { max-width:640px; }
-    blockquote {
-      margin:24px 0; padding-left:16px; border-left:5px solid var(--brand); color:#444; font-weight:500;
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0; font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+      background:var(--bg); color:var(--text); line-height:1.6;
     }
 
-    .course-grid {
-      display:flex; flex-wrap:wrap; justify-content:center; gap:24px; padding:8px;
+    /* Navbar */
+    .navbar{
+      position:sticky; top:0; z-index:100; background:var(--card); border-bottom:1px solid var(--border); box-shadow:var(--shadow);
     }
-    .card {
-      background:#fff; width:360px; max-width:100%; padding:24px; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,.1);
-      transition:transform .2s ease, box-shadow .2s ease;
+    .nav-inner{
+      max-width:1120px; margin:0 auto; padding:14px 16px; display:flex; align-items:center; gap:16px;
     }
-    .card:hover { transform:translateY(-4px); box-shadow:0 6px 24px rgba(0,0,0,.15); }
-    .card h2 { margin:0 0 10px; font-size:22px; }
-    .card p { margin:6px 0; color:#444; font-size:16px; }
-    .btn {
-      display:inline-block; margin-top:12px; padding:10px 16px; background:var(--brand); color:#fff; text-decoration:none; border-radius:6px; font-size:15px;
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px; color:var(--text);
+    }
+    .brand-badge{
+      display:grid; place-items:center; width:36px; height:36px; border-radius:8px; background:var(--brand); color:#fff; font-weight:800;
+      box-shadow:0 1px 2px rgba(0,0,0,.06);
+    }
+    .nav-spacer{ flex:1; }
+    .nav-item{
+      border:0; background:none; color:var(--muted); font-weight:600; cursor:pointer; padding:8px 10px; border-radius:8px;
+    }
+    .nav-item:hover, .nav-item[aria-current="page"]{ color:var(--brand-600); background:var(--brand-50); }
+    .nav-group{ display:flex; gap:8px; flex-wrap:wrap; }
+
+    /* Layout */
+    main{ padding:24px 16px; }
+    .container{ max-width:1120px; margin:0 auto; }
+    .section{ margin:24px 0; }
+
+    /* Hero/Intro */
+    .intro{
+      display:grid; grid-template-columns: 320px 1fr; gap:28px; background:var(--card); border:1px solid var(--border);
+      border-radius:var(--radius); padding:28px; box-shadow:var(--shadow);
+    }
+    @media (max-width: 880px){
+      .intro{ grid-template-columns: 1fr; }
+    }
+    .profile{
+      width:100%; aspect-ratio:1/1; border-radius:50%; object-fit:cover; box-shadow:0 8px 30px rgba(0,0,0,.12);
+    }
+    .kicker{ color:var(--brand-600); font-weight:700; letter-spacing:.3px; margin-bottom:6px; font-size:14px; }
+    .h1{ font-size:32px; line-height:1.25; margin:6px 0 10px; font-weight:800; letter-spacing:.2px; }
+    .lead{ color:var(--muted); margin:0 0 12px; }
+    blockquote{
+      margin:16px 0 0; padding:12px 14px; border-left:4px solid var(--brand); background:rgba(37,99,235,.06); border-radius:8px;
     }
 
-    .hidden { display:none !important; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .card, .nav-item { transition:none; }
+    /* Cards */
+    .grid{ display:grid; gap:18px; grid-template-columns: repeat(2, minmax(0,1fr)); }
+    @media (max-width: 880px){ .grid{ grid-template-columns: 1fr; } }
+    .card{
+      background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow);
     }
+    .card h2{ margin:0 0 8px; font-size:20px; }
+    .meta{ color:var(--muted); font-size:14px; margin:6px 0; }
+    .btn{
+      display:inline-block; margin-top:12px; padding:10px 14px; background:var(--brand); color:#fff; text-decoration:none; border-radius:10px;
+      font-weight:700; letter-spacing:.2px; transition:transform .08s ease, background-color .2s;
+    }
+    .btn:hover{ background:var(--brand-600); transform:translateY(-1px); }
+    .btn:focus-visible{ outline:3px solid rgba(37,99,235,.35); outline-offset:2px; }
+
+    /* Forms */
+    .field{ display:flex; flex-direction:column; gap:6px; margin:8px 0 2px; }
+    .input{
+      width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:8px; background:transparent; color:inherit;
+    }
+    .status{ margin-top:8px; font-size:14px; }
+    .status.ok{ color:var(--success); }
+    .status.err{ color:var(--danger); }
+
+    .hidden{ display:none !important; }
   </style>
 
   <!-- Google tag (gtag.js) -->
@@ -74,145 +103,146 @@
   </script>
 </head>
 <body>
-  <nav class="navbar" role="navigation" aria-label="Primary">
-    <button class="nav-item" data-tab="bipin">Bipin Kumar</button>
-    <button class="nav-item" data-tab="courses" aria-current="page">Courses</button>
-    <button class="nav-item" data-tab="teaching">Teaching Style</button>
-    <button class="nav-item" data-tab="payment">Payment</button>
-    <button class="nav-item" data-tab="studentDashboard">Student Dashboard</button>
-  </nav>
+  <header class="navbar" role="banner">
+    <div class="nav-inner">
+      <a class="brand" href="#" aria-label="Home">
+        <span class="brand-badge" aria-hidden="true">BK</span>
+        <span>Bipin Kumar</span>
+      </a>
+      <div class="nav-spacer"></div>
+      <nav class="nav-group" role="navigation" aria-label="Primary">
+        <button class="nav-item" data-tab="bipin">About</button>
+        <button class="nav-item" data-tab="courses" aria-current="page">Courses</button>
+        <button class="nav-item" data-tab="teaching">Teaching</button>
+        <button class="nav-item" data-tab="payment">Payment</button>
+        <button class="nav-item" data-tab="studentDashboard">Student Dashboard</button>
+      </nav>
+    </div>
+  </header>
 
-  <main>
-    <section id="bipin" class="container hidden" role="region" aria-labelledby="tab-bipin">
+  <main class="container" id="content">
+    <!-- About -->
+    <section id="bipin" class="section hidden" role="region" aria-labelledby="tab-bipin">
       <div class="intro">
-        <img class="profile-pic" src="bipin.jpeg" alt="Portrait of Bipin Kumar" loading="lazy" decoding="async" width="280" height="280"/>
-        <div class="intro-text">
-          <h2>Hey, I am Bipin <a href="https://www.linkedin.com/in/bipin-kumar-4287a237/" target="_blank" rel="noopener noreferrer" style="font-size:16px; color:#0077b5; text-decoration:none;">🔗 LinkedIn</a></h2>
-          <h3 style="color:var(--brand); font-style:italic; margin:10px 0 16px;">Mentor, Motivator, Problem-Solver & Technology Explorer</h3>
-          <p>Senior Principal Software Engineer and Engineering Leader building large-scale microservices on Oracle Cloud and AWS.</p>
-          <p>18+ years transforming monoliths into scalable, event-driven microservices across industries.</p>
-          <blockquote>Join my courses to not just learn the theory, but to understand how real-world systems are actually built.</blockquote>
+        <img src="bipin.jpeg" class="profile" alt="Portrait of Bipin Kumar" loading="lazy" decoding="async" width="320" height="320"/>
+        <div>
+          <div class="kicker">Mentor • Engineering Leader</div>
+          <h1 class="h1">Building real‑world systems, not just interview answers</h1>
+          <p class="lead">Senior Principal Software Engineer with 18+ years designing and shipping distributed systems on AWS and Oracle Cloud. I teach by breaking down complexity into simple, actionable steps.</p>
+          <p class="lead">From monolith-to-microservices modernization to event-driven architectures, my focus is clarity, correctness, and career outcomes.</p>
+          <blockquote>Join my programs to learn how robust systems are actually built and operated.</blockquote>
+          <p style="margin-top:10px;">
+            <a class="btn" href="https://www.linkedin.com/in/bipin-kumar-4287a237/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+          </p>
         </div>
       </div>
     </section>
 
-    <section id="courses" class="container" role="region" aria-labelledby="tab-courses">
-      <h1 class="header">Courses</h1>
-      <p class="subheader">Next cohort starts 1 September 2025 • Duration 20 weeks</p>
-      <div class="course-grid">
+    <!-- Courses -->
+    <section id="courses" class="section" role="region" aria-labelledby="tab-courses">
+      <div class="card" style="margin-bottom:16px;">
+        <h1 class="h1" style="margin:0 0 4px;">Programs</h1>
+        <p class="lead" style="margin:0;">Next cohort starts 1 September 2025 • Duration 20 weeks</p>
+      </div>
+      <div class="grid">
         <article class="card">
           <h2>Data Structures & Algorithms</h2>
-          <p>Mentor-led, interview-focused journey from fundamentals to advanced topics.</p>
-          <p><strong>📅 Next Batch:</strong> 1 Sep 2025</p>
-          <p><strong>⏳ Duration:</strong> 20 Weeks</p>
+          <p>Mentor-led, interview‑focused path from fundamentals to advanced topics with structured practice.</p>
+          <p class="meta"><strong>📅 Next Batch:</strong> 1 Sep 2025</p>
+          <p class="meta"><strong>⏳ Duration:</strong> 20 Weeks</p>
           <a class="btn" href="https://github.com/bipinkum/DSA-Course" target="_blank" rel="noopener noreferrer">Details →</a>
         </article>
         <article class="card">
           <h2>System Design</h2>
-          <p>Design scalable, fault-tolerant systems with real-world case studies.</p>
-          <p><strong>📅 Next Batch:</strong> 1 Sep 2025</p>
-          <p><strong>⏳ Duration:</strong> 20 Weeks</p>
+          <p>Design scalable, fault‑tolerant systems using real scenarios, trade‑offs, and diagrams.</p>
+          <p class="meta"><strong>📅 Next Batch:</strong> 1 Sep 2025</p>
+          <p class="meta"><strong>⏳ Duration:</strong> 20 Weeks</p>
           <a class="btn" href="https://github.com/bipinkum/System-Design-Course" target="_blank" rel="noopener noreferrer">Details →</a>
         </article>
       </div>
     </section>
 
-    <section id="teaching" class="container hidden" role="region" aria-labelledby="tab-teaching">
-      <h1 class="header">Teaching Style</h1>
-      <div class="course-grid">
+    <!-- Teaching -->
+    <section id="teaching" class="section hidden" role="region" aria-labelledby="tab-teaching">
+      <div class="grid">
         <article class="card">
-          <h2>Video 1: DSA Concept Simplified</h2>
-          <p>Complex DS concepts explained with real-world analogies.</p>
+          <h2>Video 1: DSA Concepts Simplified</h2>
+          <p>Complex DS topics via real‑world analogies and stepwise reasoning.</p>
           <a class="btn" href="https://d2akmzsrq67og8.cloudfront.net/DSA/video1759923415.mp4" target="_blank" rel="noopener noreferrer">Watch Video →</a>
         </article>
         <article class="card">
-          <h2>Video 2: Real-World System Design</h2>
-          <p>System design through intuitive examples and diagrams.</p>
+          <h2>Video 2: Real‑World System Design</h2>
+          <p>Learn design through intuitive examples and pragmatic patterns.</p>
           <a class="btn" href="https://drive.google.com/file/d/VIDEO2_LINK/view" target="_blank" rel="noopener noreferrer">Watch Video →</a>
         </article>
       </div>
     </section>
 
-    <section id="payment" class="container hidden" role="region" aria-labelledby="tab-payment">
-      <h1 class="header">Payment</h1>
-      <div class="card" style="margin:0 auto;">
-        <h2 style="color:var(--brand); margin:0 0 10px;">Pay for the Course</h2>
-        <p>Click the button below to pay ₹35,000 securely.</p>
+    <!-- Payment -->
+    <section id="payment" class="section hidden" role="region" aria-labelledby="tab-payment">
+      <article class="card" style="max-width:720px; margin-inline:auto;">
+        <h2 style="margin:0 0 8px;">Secure Payment</h2>
+        <p class="lead" style="margin:0 0 12px;">Pay ₹35,000 for the full program.</p>
         <a class="btn" href="https://rzp.io/rzp/fhbHRyTK" target="_blank" rel="noopener noreferrer">Pay Now → ₹35,000</a>
-      </div>
+      </article>
     </section>
 
-    <section id="studentDashboard" class="container hidden" role="region" aria-labelledby="tab-studentDashboard">
-      <h1 class="header">Student Dashboard</h1>
-      <div class="card" style="max-width:720px; margin:0 auto;">
-        <label for="studentEmail"><strong>Email</strong></label>
-        <input id="studentEmail" type="email" placeholder="Enter your email" style="width:100%; padding:10px; margin:10px 0 12px;"/>
+    <!-- Student Dashboard -->
+    <section id="studentDashboard" class="section hidden" role="region" aria-labelledby="tab-studentDashboard">
+      <article class="card" style="max-width:720px; margin-inline:auto;">
+        <h2 style="margin:0 0 10px;">Magic Link Login</h2>
+        <div class="field">
+          <label for="studentEmail"><strong>Email</strong></label>
+          <input id="studentEmail" class="input" type="email" placeholder="you@example.com" autocomplete="email"/>
+        </div>
         <button id="getMagicLinkBtn" class="btn" type="button">Get Magic Link</button>
-        <div id="loginStatus" role="status" aria-live="polite" style="margin-top:10px;"></div>
-      </div>
+        <div id="loginStatus" class="status" role="status" aria-live="polite"></div>
+      </article>
     </section>
   </main>
 
   <script>
     (function(){
-      const sections = document.querySelectorAll('main > section');
       const tabs = document.querySelectorAll('.nav-item');
+      const sections = document.querySelectorAll('main > .section');
 
-      function activate(tabId) {
-        sections.forEach(s => s.classList.toggle('hidden', s.id !== tabId));
-        tabs.forEach(b => {
-          const active = b.dataset.tab === tabId;
-          b.setAttribute('aria-current', active ? 'page' : 'false');
-        });
-        history.replaceState(null, '', '#' + tabId);
+      function activate(id){
+        sections.forEach(s => s.classList.toggle('hidden', s.id !== id));
+        tabs.forEach(t => t.setAttribute('aria-current', t.dataset.tab === id ? 'page' : 'false'));
+        history.replaceState(null, '', '#' + id);
       }
-
-      function onNavClick(e){
-        const id = e.currentTarget.dataset.tab;
-        if(id) activate(id);
-      }
-
-      tabs.forEach(b => b.addEventListener('click', onNavClick));
-
-      // Initial tab from hash or default to courses
-      const initial = location.hash?.substring(1) || 'courses';
-      activate(initial);
+      tabs.forEach(t => t.addEventListener('click', e => activate(e.currentTarget.dataset.tab)));
+      activate(location.hash?.substring(1) || 'courses');
 
       // Magic link
-      const emailInput = document.getElementById('studentEmail');
-      const loginStatus = document.getElementById('loginStatus');
+      const email = document.getElementById('studentEmail');
       const btn = document.getElementById('getMagicLinkBtn');
-
+      const status = document.getElementById('loginStatus');
       if(btn){
         btn.addEventListener('click', async () => {
-          const email = (emailInput?.value || '').trim();
-          if(!email){
-            loginStatus.style.color = 'red';
-            loginStatus.textContent = 'Please enter your email';
+          const value = (email?.value || '').trim();
+          if(!value){
+            status.textContent = 'Please enter your email';
+            status.className = 'status err';
+            email?.focus();
             return;
           }
-          btn.disabled = true; btn.textContent = 'Sending...';
-          loginStatus.style.color = '#222';
-          loginStatus.textContent = 'Sending magic link...';
-          try {
+          btn.disabled = true; btn.textContent = 'Sending…';
+          status.textContent = 'Sending magic link…'; status.className = 'status';
+          try{
             const res = await fetch('https://dsa-system-design-course-website.onrender.com/auth/login', {
-              method: 'POST',
-              headers: {'Content-Type': 'application/json'},
-              body: JSON.stringify({ email })
+              method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ email:value })
             });
-            const isJson = res.headers.get('content-type')?.includes('application/json');
-            const data = isJson ? await res.json() : {};
+            const ct = res.headers.get('content-type') || '';
+            const data = ct.includes('application/json') ? await res.json() : {};
             if(res.ok){
-              loginStatus.style.color = 'green';
-              loginStatus.textContent = '✅ Magic link sent! Check your email.';
-            } else {
-              loginStatus.style.color = 'red';
-              loginStatus.textContent = '❌ ' + (data.error || 'Failed to send magic link.');
+              status.textContent = '✅ Magic link sent! Check your email.'; status.className = 'status ok';
+            }else{
+              status.textContent = '❌ ' + (data.error || 'Failed to send magic link.'); status.className = 'status err';
             }
-          } catch (err) {
-            loginStatus.style.color = 'red';
-            loginStatus.textContent = '❌ Network error. Please try again.';
-          } finally {
+          }catch{
+            status.textContent = '❌ Network error. Please try again.'; status.className = 'status err';
+          }finally{
             btn.disabled = false; btn.textContent = 'Get Magic Link';
           }
         });
