@@ -5,96 +5,648 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Bipin Kumar — DSA & System Design Course</title>
   <meta name="description" content="Mentor-led DSA and System Design courses with real-world practice and interview prep."/>
-  <link rel="canonical" href="https://your-domain.example/"/>
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Bipin Kumar — DSA & System Design Course"/>
-  <meta property="og:description" content="Mentor-led DSA and System Design courses with real-world practice and interview prep."/>
-  <meta property="og:type" content="website"/>
-
+  
   <style>
     :root {
-      --brand:#d9534f; --text:#222; --muted:#666; --bg:#f5f7fa; --card:#fff; --shadow:0 2px 10px rgba(0,0,0,.1);
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --accent: #f59e0b;
+      --text-dark: #1f2937;
+      --text-mid: #4b5563;
+      --text-light: #6b7280;
+      --bg-light: #f9fafb;
+      --bg-white: #ffffff;
+      --border: #e5e7eb;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     }
-    * { box-sizing: border-box; }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
     body {
-      margin:0; font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif; line-height:1.6; background:var(--bg); color:var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      background: var(--bg-light);
+      color: var(--text-dark);
     }
+    
+    /* Navigation */
     nav.navbar {
-      position:fixed; top:0; left:0; right:0; z-index:100; background:#fff; box-shadow:var(--shadow);
-      display:flex; justify-content:center; gap:30px; padding:16px 12px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
     }
+    
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+    
+    .nav-brand {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.025em;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 8px;
+    }
+    
     .nav-item {
-      border:0; background:none; font:inherit; font-weight:700; font-size:18px; color:#333; cursor:pointer; padding:6px 8px;
+      border: 0;
+      background: none;
+      font: inherit;
+      font-weight: 500;
+      font-size: 15px;
+      color: var(--text-mid);
+      cursor: pointer;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
     }
-    .nav-item:hover, .nav-item[aria-current="page"] { color:var(--brand); }
-    main { padding-top:84px; }
-    .container { padding:24px; max-width:1200px; margin:0 auto; }
-    .header { font-size:36px; font-weight:700; margin:0 0 8px; text-align:center; }
-    .subheader { font-size:20px; color:var(--muted); text-align:center; margin:0 0 32px; }
-
+    
+    .nav-item:hover {
+      background: var(--bg-light);
+      color: var(--text-dark);
+    }
+    
+    .nav-item[aria-current="page"] {
+      color: var(--primary);
+      background: rgba(37, 99, 235, 0.1);
+    }
+    
+    /* Main Layout */
+    main {
+      padding-top: 72px;
+    }
+    
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+    
+    .hidden {
+      display: none !important;
+    }
+    
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 80px 24px 64px;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(245, 158, 11, 0.05) 100%);
+    }
+    
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -0.025em;
+      color: var(--text-dark);
+    }
+    
+    .hero p {
+      font-size: 20px;
+      color: var(--text-mid);
+      max-width: 700px;
+      margin: 0 auto 32px;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 8px 16px;
+      background: var(--primary);
+      color: white;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    
+    /* Course Details Banner */
+    .course-details-banner {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 32px;
+      border-radius: 16px;
+      text-align: center;
+      margin-bottom: 48px;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .course-details-banner h3 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    
+    .course-info-grid {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    
+    .course-info-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .course-info-item .icon {
+      font-size: 32px;
+    }
+    
+    .course-info-item .label {
+      font-size: 14px;
+      opacity: 0.9;
+      font-weight: 500;
+    }
+    
+    .course-info-item .value {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    
+    /* About Section */
     .intro {
-      display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:32px; background:#fff; padding:40px; border-radius:12px; box-shadow:var(--shadow);
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 48px;
+      align-items: start;
+      background: var(--bg-white);
+      padding: 48px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      max-width: 1000px;
+      margin: 0 auto;
     }
+    
     .profile-pic {
-      width:280px; max-width:100%; aspect-ratio:1/1; border-radius:50%; object-fit:cover; box-shadow:0 4px 15px rgba(0,0,0,.1);
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: var(--shadow-lg);
     }
-    .intro-text { max-width:640px; }
+    
+    .intro-text h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-dark);
+    }
+    
+    .intro-text h3 {
+      font-size: 18px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    
+    .intro-text p {
+      font-size: 16px;
+      color: var(--text-mid);
+      margin-bottom: 16px;
+    }
+    
+    .linkedin-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #0077b5;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      margin-left: 8px;
+      transition: opacity 0.2s;
+    }
+    
+    .linkedin-link:hover {
+      opacity: 0.8;
+    }
+    
     blockquote {
-      margin:24px 0; padding-left:16px; border-left:5px solid var(--brand); color:#444; font-weight:500;
+      margin: 24px 0;
+      padding: 20px 24px;
+      background: rgba(37, 99, 235, 0.05);
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-style: italic;
     }
-
+    
+    /* Course Grid */
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    
+    .section-header h1 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--text-dark);
+    }
+    
+    .section-header p {
+      font-size: 18px;
+      color: var(--text-mid);
+    }
+    
     .course-grid {
-      display:flex; flex-wrap:wrap; justify-content:center; gap:24px; padding:8px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 32px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
+    
     .card {
-      background:#fff; width:360px; max-width:100%; padding:24px; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,.1);
-      transition:transform .2s ease, box-shadow .2s ease;
+      background: var(--bg-white);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
     }
-    .card:hover { transform:translateY(-4px); box-shadow:0 6px 24px rgba(0,0,0,.15); }
-    .card h2 { margin:0 0 10px; font-size:22px; }
-    .card p { margin:6px 0; color:#444; font-size:16px; }
+    
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .card h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+    }
+    
+    .card p {
+      font-size: 16px;
+      color: var(--text-mid);
+      margin-bottom: 12px;
+    }
+    
     .btn {
-      display:inline-block; margin-top:12px; padding:10px 16px; background:var(--brand); color:#fff; text-decoration:none; border-radius:6px; font-size:15px;
+      display: inline-block;
+      padding: 12px 24px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
     }
-
-    .hidden { display:none !important; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .card, .nav-item { transition:none; }
+    
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateX(2px);
     }
-
-    /* Dashboard (login page) – no background, full-width */
-.dashboard-grid{
-  display:grid; grid-template-columns: 1.2fr 1fr; gap:24px; align-items:start;
-  padding:0; background:transparent; border:none; box-shadow:none;
-}
-@media (max-width: 900px){ .dashboard-grid{ grid-template-columns: 1fr; } }
-
-.trouble-block{ padding:0; background:transparent; border:none; }
-.trouble-title{ font-size:20px; font-weight:800; margin:0 0 8px; }
-.trouble-list{ margin:6px 0 0 18px; color:var(--muted); }
-
-.form-grid{
-  display:grid; grid-template-columns: 110px 1fr auto; gap:10px 12px; align-items:center;
-}
-@media (max-width: 600px){ .form-grid{ grid-template-columns: 1fr; } }
-.label-strong{ font-weight:700; color:#333; }
-.input{
-  width:100%; padding:10px 12px; border:1px solid #ddd; border-radius:8px; background:#fff; color:#222;
-}
-.help-text{ grid-column: 2 / 4; color:var(--muted); font-size:14px; }
-@media (max-width: 600px){ .help-text{ grid-column: 1 / -1; } }
-
-.hr{ height:1px; background:rgba(0,0,0,.08); border:0; margin:24px 0; }
-.trouble-title{ font-size:20px; font-weight:800; margin:0 0 8px; }
-.trouble-list{ margin:6px 0 0 18px; color:var(--muted); }
-.contact a{ text-decoration:underline; }
-
-
+    
+    .btn-large {
+      padding: 16px 32px;
+      font-size: 18px;
+    }
+    
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    /* Syllabus Section */
+    .syllabus-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-light);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--text-dark);
+      transition: all 0.2s ease;
+    }
+    
+    .syllabus-toggle:hover {
+      background: rgba(37, 99, 235, 0.05);
+      border-color: var(--primary);
+    }
+    
+    .syllabus-toggle .arrow {
+      transition: transform 0.3s ease;
+      font-size: 20px;
+    }
+    
+    .syllabus-toggle.active .arrow {
+      transform: rotate(180deg);
+    }
+    
+    .syllabus-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: var(--bg-white);
+      border-radius: 8px;
+      margin-top: 12px;
+    }
+    
+    .syllabus-content.active {
+      max-height: 5000px;
+      border: 1px solid var(--border);
+    }
+    
+    .syllabus-inner {
+      padding: 32px;
+    }
+    
+    .syllabus-section {
+      margin-bottom: 28px;
+    }
+    
+    .syllabus-section h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .syllabus-section ul {
+      list-style: none;
+      margin-left: 32px;
+    }
+    
+    .syllabus-section li {
+      padding: 6px 0;
+      color: var(--text-mid);
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    .syllabus-section li:before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    /* Payment Section */
+    .payment-card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--bg-white);
+      padding: 48px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+    }
+    
+    .payment-card h2 {
+      font-size: 28px;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+    
+    .payment-card p {
+      font-size: 18px;
+      color: var(--text-mid);
+      margin-bottom: 32px;
+    }
+    
+    .price {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 24px;
+    }
+    
+    /* Login Section */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 48px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .login-form {
+      background: var(--bg-white);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+      font-size: 15px;
+    }
+    
+    .input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 15px;
+      transition: all 0.2s ease;
+    }
+    
+    .input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    
+    .help-text {
+      font-size: 14px;
+      color: var(--text-light);
+      margin-top: 8px;
+    }
+    
+    #loginStatus {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    
+    .hr {
+      height: 1px;
+      background: var(--border);
+      border: 0;
+      margin: 48px 0;
+    }
+    
+    .info-section h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+    }
+    
+    .info-section p {
+      font-size: 16px;
+      color: var(--text-mid);
+      margin-bottom: 12px;
+    }
+    
+    .troubleshooting {
+      background: rgba(37, 99, 235, 0.05);
+      padding: 32px;
+      border-radius: 12px;
+      margin-top: 32px;
+    }
+    
+    .troubleshooting h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+    }
+    
+    .troubleshooting ul {
+      list-style: none;
+      margin-bottom: 16px;
+    }
+    
+    .troubleshooting li {
+      padding: 8px 0;
+      color: var(--text-mid);
+      padding-left: 24px;
+      position: relative;
+    }
+    
+    .troubleshooting li:before {
+      content: "•";
+      position: absolute;
+      left: 8px;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    .contact-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .contact-link:hover {
+      text-decoration: underline;
+    }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+      .intro {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+      }
+      
+      .profile-pic {
+        max-width: 250px;
+        margin: 0 auto;
+      }
+      
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero h1 {
+        font-size: 40px;
+      }
+      
+      .nav-brand {
+        font-size: 16px;
+      }
+      
+      .nav-item {
+        font-size: 14px;
+        padding: 6px 12px;
+      }
+      
+      .course-info-grid {
+        gap: 32px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .course-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .container {
+        padding: 48px 16px;
+      }
+      
+      .hero h1 {
+        font-size: 32px;
+      }
+      
+      .hero p {
+        font-size: 18px;
+      }
+      
+      .nav-links {
+        gap: 4px;
+      }
+      
+      .nav-item {
+        font-size: 13px;
+        padding: 6px 8px;
+      }
+      
+      .course-details-banner {
+        padding: 24px 20px;
+      }
+      
+      .course-info-grid {
+        gap: 24px;
+      }
+    }
   </style>
 
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HVZ9VG7YQ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -104,109 +656,306 @@
 </head>
 <body>
   <nav class="navbar" role="navigation" aria-label="Primary">
-    <button class="nav-item" data-tab="bipin">Bipin Kumar</button>
-    <button class="nav-item" data-tab="courses" aria-current="page">Courses</button>
-    <button class="nav-item" data-tab="teaching">Teaching Style</button>
-    <button class="nav-item" data-tab="payment">Payment</button>
-    <button class="nav-item" data-tab="studentDashboard">Student Dashboard</button>
+    <div class="nav-container">
+      <div class="nav-brand">Bipin Kumar</div>
+      <div class="nav-links">
+        <button class="nav-item" data-tab="bipin">About</button>
+        <button class="nav-item" data-tab="courses" aria-current="page">Courses</button>
+        <button class="nav-item" data-tab="teaching">Teaching</button>
+        <button class="nav-item" data-tab="payment">Pricing</button>
+        <button class="nav-item" data-tab="studentDashboard">Login</button>
+      </div>
+    </div>
   </nav>
 
   <main>
     <section id="bipin" class="container hidden" role="region" aria-labelledby="tab-bipin">
       <div class="intro">
-        <img class="profile-pic" src="bipin.jpeg" alt="Portrait of Bipin Kumar" loading="lazy" decoding="async" width="280" height="280"/>
+        <img class="profile-pic" src="bipin.jpeg" alt="Portrait of Bipin Kumar" loading="lazy" decoding="async"/>
         <div class="intro-text">
-          <h2>Hey, I am Bipin <a href="https://www.linkedin.com/in/bipin-kumar-4287a237/" target="_blank" rel="noopener noreferrer" style="font-size:16px; color:#0077b5; text-decoration:none;">🔗 LinkedIn</a></h2>
-          <h3 style="color:var(--brand); font-style:italic; margin:10px 0 16px;">Mentor, Motivator, Problem-Solver & Technology Explorer</h3>
-          <p>Senior Principal Software Engineer and Engineering Leader building large-scale microservices on Oracle Cloud and AWS.</p>
-          <p>18+ years transforming monoliths into scalable, event-driven microservices across industries.</p>
-          <blockquote>Join my courses to not just learn the theory, but to understand how real-world systems are actually built.</blockquote>
+          <h2>
+            Bipin Kumar
+            <a href="https://www.linkedin.com/in/bipin-kumar-4287a237/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+              <svg width="20" height="20" fill="#0077b5" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              LinkedIn
+            </a>
+          </h2>
+          <h3>Mentor, Motivator, Problem-Solver & Technology Explorer</h3>
+          <p>Senior Principal Software Engineer and Engineering Leader specializing in building large-scale microservices on Oracle Cloud and AWS.</p>
+          <p>With 18+ years of experience, I've transformed complex monolithic systems into scalable, event-driven microservices across multiple industries.</p>
+          <blockquote>Join my courses to not just learn the theory, but to understand how real-world systems are actually built and scaled in production environments.</blockquote>
         </div>
       </div>
     </section>
 
     <section id="courses" class="container" role="region" aria-labelledby="tab-courses">
-      <h1 class="header">Courses</h1>
-      <p class="subheader">Next cohort starts 1 September 2025 • Duration 20 weeks</p>
+      <div class="hero">
+        <div class="badge">Next Cohort Starting Soon</div>
+        <h1>Master DSA & System Design</h1>
+        <p>Mentor-led courses designed for engineers who want to excel in technical interviews and build production-grade systems.</p>
+      </div>
+      
+      <div class="course-details-banner">
+        <h3>Upcoming Batch Details</h3>
+        <div class="course-info-grid">
+          <div class="course-info-item">
+            <div class="icon">📅</div>
+            <div class="label">Start Date</div>
+            <div class="value">September 1, 2025</div>
+          </div>
+          <div class="course-info-item">
+            <div class="icon">⏳</div>
+            <div class="label">Duration</div>
+            <div class="value">20 Weeks</div>
+          </div>
+        </div>
+      </div>
+      
       <div class="course-grid">
         <article class="card">
           <h2>Data Structures & Algorithms</h2>
-          <p>Mentor-led, interview-focused journey from fundamentals to advanced topics.</p>
-          <p><strong>📅 Next Batch:</strong> 1 Sep 2025</p>
-          <p><strong>⏳ Duration:</strong> 20 Weeks</p>
-          <a class="btn" href="https://github.com/bipinkum/DSA-Course" target="_blank" rel="noopener noreferrer">Details →</a>
+          <p>A comprehensive, mentor-led journey from fundamentals to advanced topics with a focus on interview preparation and problem-solving mastery.</p>
+          <p style="margin-top: 16px;"><strong>🎯 Focus:</strong> Interview Prep & Fundamentals</p>
+          
+          <button class="syllabus-toggle" onclick="toggleSyllabus('dsa')">
+            <span>📚 View Complete Syllabus</span>
+            <span class="arrow">▼</span>
+          </button>
+          
+          <div id="dsa-syllabus" class="syllabus-content">
+            <div class="syllabus-inner">
+              <div class="syllabus-section">
+                <h4>☕ Important Java Concepts for DSA</h4>
+                <ul>
+                  <li>Java Basics – Variables, Data Types, Loops, Conditionals</li>
+                  <li>OOP Concepts – Classes, Objects, Inheritance, Polymorphism</li>
+                  <li>Memory Management – Stack vs Heap, Garbage Collection</li>
+                  <li>Collections Framework – List, Set, Map, Queue interfaces</li>
+                  <li>Wrapper Classes & Autoboxing</li>
+                  <li>Comparators & Sorting</li>
+                  <li>Exception Handling</li>
+                </ul>
+              </div>
+              
+              <div class="syllabus-section">
+                <h4>⏱️ Complexity Analysis</h4>
+                <ul>
+                  <li>Big-O Notation – Time and Space Complexity</li>
+                  <li>Analyzing Loops and Recursion</li>
+                  <li>Amortized Analysis</li>
+                  <li>Focus on time-efficient problem-solving</li>
+                </ul>
+              </div>
+              
+              <div class="syllabus-section">
+                <h4>📦 Arrays</h4>
+                <ul>
+                  <li>Theory – Fixed-size containers, Index-based access</li>
+                  <li>Kadane's Algorithm</li>
+                  <li>Sliding Window Maximum</li>
+                  <li>Two Pointers Technique</li>
+                  <li>Merge Intervals</li>
+                </ul>
+              </div>
+              
+              <div class="syllabus-section">
+                <h4>🔗 Linked Lists</h4>
+                <ul>
+                  <li>Theory – Singly, Doubly, and Circular Linked Lists</li>
+                  <li>Reverse a Linked List</li>
+                  <li>Detect Loop (Floyd's Cycle Detection)</li>
+                  <li>Merge K Sorted Lists</li>
+                  <li>Find Intersection Point</li>
+                </ul>
+              </div>
+              
+              <div class="syllabus-section">
+                <h4>📚 Stacks and Queues</h4>
+                <ul>
+                  <li>Theory – LIFO and FIFO data structures</li>
+                  <li>Next Greater Element</li>
+                  <li>Min Stack Implementation</li>
+                  <li>Valid Parentheses</li>
+                  <li>LRU Cache</li>
+                  <li>Queue using Stacks</li>
+                </ul>
+              </div>
+              
+              <div class="syllabus-section">
+                <h4>🌳 Trees</h4>
+                <ul>
+                  <li>Theory – Binary Trees, BSTs, Tree Traversals</li>
+                  <li>Diameter of a Tree</li>
+                  <li>Lowest Common Ancestor</li>
+                  <li>Vertical Order Traversal</li>
+                  <li>Serialize/Deserialize Tree</li>
+                </ul>
+              </div>
+              
+              <div class="syllabus-section">
+                <h4>🔠 Trie (Advanced Trees)</h4>
+                <ul>
+                  <li>Theory – Prefix Trees for efficient string operations</li>
+                  <li>Insert and Search Word</li>
+                  <li>Word Break Problem</li>
+                  <li>AutoComplete System</li>
+                </ul>
+              </div>
+              
+              <div class="syllabus-section">
+                <h4>🔺 Heaps</h4>
+                <ul>
+                  <li>Theory – Min Heap, Max Heap, Priority Queue</li>
+                  <li>K Largest Elements</li>
+                  <li>Median in Data Stream</li>
+                  <li>Merge K Sorted Arrays</li>
+                </ul>
+              </div>
+              
+              <div class="syllabus-section">
+                <h4>🧩 Hash Tables</h4>
+                <ul>
+                  <li>Theory – Hashing, Collision Resolution, HashMap</li>
+                  <li>Two Sum Problem</li>
+                  <li>Group Anagrams</li>
+                  <li>Subarray Sum equals K</li>
+                  <li>Longest Consecutive Sequence</li>
+                </ul>
+              </div>
+              
+              <div class="syllabus-section">
+                <h4>⚙️ Algorithmic Paradigms</h4>
+                <ul>
+                  <li><strong>Searching & Sorting:</strong> Binary Search, Merge Sort, Quick Sort</li>
+                  <li><strong>Divide & Conquer:</strong> Maximum Subarray, Binary Search variants</li>
+                  <li><strong>Greedy Algorithms:</strong> Activity Selection, Fractional Knapsack, Huffman Encoding</li>
+                  <li><strong>Dynamic Programming:</strong> 0/1 Knapsack, LCS, Matrix Chain, Edit Distance, Coin Change</li>
+                  <li><strong>Recursion & Backtracking:</strong> Subsets, Permutations, N-Queens, Sudoku Solver</li>
+                </ul>
+              </div>
+              
+              <div class="syllabus-section">
+                <h4>🌐 Graph Algorithms</h4>
+                <ul>
+                  <li>Theory – Graph Representations, BFS, DFS</li>
+                  <li>Detect Cycle (Directed/Undirected)</li>
+                  <li>Topological Sort</li>
+                  <li>Dijkstra's Shortest Path Algorithm</li>
+                  <li>Union-Find (Disjoint Set)</li>
+                  <li>Kruskal's & Prim's Algorithms</li>
+                </ul>
+              </div>
+              
+              <div class="syllabus-section">
+                <h4>🔄 Coding Patterns</h4>
+                <ul>
+                  <li>Sliding Window Pattern</li>
+                  <li>Two Pointers Pattern</li>
+                  <li>Fast and Slow Pointers</li>
+                  <li>Merge Intervals Pattern</li>
+                  <li>Top K Elements Pattern</li>
+                  <li>Backtracking Patterns</li>
+                  <li>Dynamic Programming Templates</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <a class="btn" href="https://github.com/bipinkum/DSA-Course" target="_blank" rel="noopener noreferrer" style="margin-top: 20px;">View on GitHub →</a>
         </article>
+        
         <article class="card">
           <h2>System Design</h2>
-          <p>Design scalable, fault-tolerant systems with real-world case studies.</p>
-          <p><strong>📅 Next Batch:</strong> 1 Sep 2025</p>
-          <p><strong>⏳ Duration:</strong> 20 Weeks</p>
-          <a class="btn" href="https://github.com/bipinkum/System-Design-Course" target="_blank" rel="noopener noreferrer">Details →</a>
+          <p>Learn to design scalable, fault-tolerant distributed systems through real-world case studies and hands-on architecture sessions.</p>
+          <p style="margin-top: 16px;"><strong>🎯 Focus:</strong> Real-World Applications</p>
+          
+          <button class="syllabus-toggle" onclick="toggleSyllabus('system')">
+            <span>📚 View Complete Syllabus</span>
+            <span class="arrow">▼</span>
+          </button>
+          
+          <div id="system-syllabus" class="syllabus-content">
+            <div class="syllabus-inner">
+              <p style="color: var(--text-mid); margin-bottom: 20px;">Comprehensive system design curriculum covering distributed systems, scalability patterns, and real-world architectures. Detailed syllabus coming soon.</p>
+            </div>
+          </div>
+          
+          <a class="btn" href="https://github.com/bipinkum/System-Design-Course" target="_blank" rel="noopener noreferrer" style="margin-top: 20px;">View on GitHub →</a>
         </article>
       </div>
     </section>
 
     <section id="teaching" class="container hidden" role="region" aria-labelledby="tab-teaching">
-      <h1 class="header">Teaching Style</h1>
+      <div class="section-header">
+        <h1>Teaching Philosophy</h1>
+        <p>Experience my teaching style through these sample sessions</p>
+      </div>
+      
       <div class="course-grid">
         <article class="card">
-          <h2>Video 1: DSA Concept Simplified</h2>
-          <p>Complex DS concepts explained with real-world analogies.</p>
-          <a class="btn" href="https://d2akmzsrq67og8.cloudfront.net/DSA/video1759923415.mp4" target="_blank" rel="noopener noreferrer">Watch Video →</a>
+          <h2>DSA Concepts Simplified</h2>
+          <p>Watch how I break down complex data structure concepts using real-world analogies and intuitive explanations that make learning engaging and memorable.</p>
+          <a class="btn" href="https://d2akmzsrq67og8.cloudfront.net/DSA/video1759923415.mp4" target="_blank" rel="noopener noreferrer">Watch Sample Lecture →</a>
         </article>
+        
         <article class="card">
-          <h2>Video 2: Real-World System Design</h2>
-          <p>System design through intuitive examples and diagrams.</p>
-          <a class="btn" href="https://drive.google.com/file/d/VIDEO2_LINK/view" target="_blank" rel="noopener noreferrer">Watch Video →</a>
+          <h2>System Design Walkthrough</h2>
+          <p>See how I approach system design problems with step-by-step breakdowns, visual diagrams, and practical examples from production systems.</p>
+          <a class="btn" href="https://drive.google.com/file/d/VIDEO2_LINK/view" target="_blank" rel="noopener noreferrer">Watch Sample Lecture →</a>
         </article>
       </div>
     </section>
 
     <section id="payment" class="container hidden" role="region" aria-labelledby="tab-payment">
-      <h1 class="header">Payment</h1>
-      <div class="card" style="margin:0 auto;">
-        <h2 style="color:var(--brand); margin:0 0 10px;">Pay for the Course</h2>
-        <p>Click the button below to pay ₹35,000 securely.</p>
-        <a class="btn" href="https://rzp.io/rzp/fhbHRyTK" target="_blank" rel="noopener noreferrer">Pay Now → ₹35,000</a>
+      <div class="section-header">
+        <h1>Course Investment</h1>
+        <p>Secure your spot in the next cohort</p>
+      </div>
+      
+      <div class="payment-card">
+        <h2>Enroll Now</h2>
+        <p>One-time payment for complete course access</p>
+        <div class="price">₹35,000</div>
+        <a class="btn btn-large" href="https://rzp.io/rzp/fhbHRyTK" target="_blank" rel="noopener noreferrer">Proceed to Payment →</a>
+        <p style="margin-top: 24px; font-size: 14px; color: var(--text-light);">Secure payment powered by Razorpay</p>
       </div>
     </section>
 
-<section id="studentDashboard" class="container" role="region" aria-labelledby="tab-studentDashboard">
-  <div class="dashboard-grid">
-    <div>
-      <h2 class="dashboard-title" style="margin:0 0 8px;">Login</h2>
-      <p class="dashboard-copy">
-        You can login if you have enrolled in any of my
-        <a href="#courses">courses</a>.
-      </p>
-    </div>
-
-    <div>
-      <div class="form-grid">
-        <label for="studentEmail" class="label-strong">Email</label>
-        <input id="studentEmail" class="input" type="email" placeholder="you@example.com" autocomplete="email"/>
-        <button id="getMagicLinkBtn" class="btn" type="button" style="white-space:nowrap;">Login</button>
-        <div></div>
-        <div class="help-text">Please use your registered email address to login.</div>
+    <section id="studentDashboard" class="container" role="region" aria-labelledby="tab-studentDashboard">
+      <div class="section-header">
+        <h1>Student Dashboard</h1>
+        <p>Access your course materials and resources</p>
       </div>
-      <div id="loginStatus" role="status" aria-live="polite" style="margin-top:10px;"></div>
-    </div>
-  </div>
+      
+      <div class="dashboard-grid">
+        <div class="info-section">
+          <h2>Welcome Back</h2>
+          <p>Login to access your enrolled courses, lecture recordings, assignments, and course materials.</p>
+          <p>If you haven't enrolled yet, please visit the <a href="#courses" style="color: var(--primary); text-decoration: none; font-weight: 600;">Courses</a> section to learn more about our programs.</p>
+        </div>
 
-  <hr class="hr"/>
+        <div class="login-form">
+          <div class="form-group">
+            <label for="studentEmail">Email Address</label>
+            <input id="studentEmail" class="input" type="email" placeholder="your.email@example.com" autocomplete="email"/>
+            <div class="help-text">Use the email address you registered with</div>
+          </div>
+          <button id="getMagicLinkBtn" class="btn" type="button" style="width: 100%;">Send Login Link</button>
+          <div id="loginStatus" role="status" aria-live="polite"></div>
+        </div>
+      </div>
 
-  <div class="trouble-block">
-    <h3 class="trouble-title">Troubleshooting</h3>
-    <ul class="trouble-list">
-      - If you do not find email in your inbox, check Spam/Marketing/Promotions. Corporate mailboxes may block automated emails.
-      - Your session will expire within a day.
-      - Your session will logout if you try to access from multiple devices.
-    </ul>
-    <p class="dashboard-copy contact" style="margin-top:12px;">
-      For issues, email <a href="mailto:bipin.masterclass@gmail.com">bipin.masterclass@gmail.com</a>.
-    </p>
-  </div>
-</section>
+      <div class="troubleshooting">
+        <h3>Need Help?</h3>
+        <ul>
+          <li>Check your spam, promotions, or marketing folders if you don't see the email</li>
+          <li>Corporate email systems may block automated emails</li>
+          <li>Login sessions expire after 24 hours for security</li>
+          <li>You'll be logged out if accessing from multiple devices simultaneously</li>
+        </ul>
+        <p>For technical support, contact <a href="mailto:bipin.masterclass@gmail.com" class="contact-link">bipin.masterclass@gmail.com</a></p>
+      </div>
+    </section>
   </main>
 
   <script>
@@ -223,18 +972,15 @@
         history.replaceState(null, '', '#' + tabId);
       }
 
-      function onNavClick(e){
-        const id = e.currentTarget.dataset.tab;
+      tabs.forEach(b => b.addEventListener('click', () => {
+        const id = b.dataset.tab;
         if(id) activate(id);
-      }
+      }));
 
-      tabs.forEach(b => b.addEventListener('click', onNavClick));
-
-      // Initial tab from hash or default to courses
       const initial = location.hash?.substring(1) || 'courses';
       activate(initial);
 
-      // Magic link
+      // Magic link login
       const emailInput = document.getElementById('studentEmail');
       const loginStatus = document.getElementById('loginStatus');
       const btn = document.getElementById('getMagicLinkBtn');
@@ -243,13 +989,19 @@
         btn.addEventListener('click', async () => {
           const email = (emailInput?.value || '').trim();
           if(!email){
-            loginStatus.style.color = 'red';
-            loginStatus.textContent = 'Please enter your email';
+            loginStatus.style.color = '#dc2626';
+            loginStatus.style.background = 'rgba(220, 38, 38, 0.1)';
+            loginStatus.style.display = 'block';
+            loginStatus.textContent = 'Please enter your email address';
             return;
           }
-          btn.disabled = true; btn.textContent = 'Sending...';
-          loginStatus.style.color = '#222';
-          loginStatus.textContent = 'Sending magic link...';
+          btn.disabled = true;
+          btn.textContent = 'Sending...';
+          loginStatus.style.color = 'var(--text-mid)';
+          loginStatus.style.background = 'var(--bg-light)';
+          loginStatus.style.display = 'block';
+          loginStatus.textContent = 'Sending magic link to your email...';
+          
           try {
             const res = await fetch('https://dsa-system-design-course-website.onrender.com/auth/login', {
               method: 'POST',
@@ -258,22 +1010,36 @@
             });
             const isJson = res.headers.get('content-type')?.includes('application/json');
             const data = isJson ? await res.json() : {};
+            
             if(res.ok){
-              loginStatus.style.color = 'green';
-              loginStatus.textContent = '✅ Magic link sent! Check your email.';
+              loginStatus.style.color = '#16a34a';
+              loginStatus.style.background = 'rgba(22, 163, 74, 0.1)';
+              loginStatus.textContent = '✅ Magic link sent! Check your email inbox.';
             } else {
-              loginStatus.style.color = 'red';
-              loginStatus.textContent = '❌ ' + (data.error || 'Failed to send magic link.');
+              loginStatus.style.color = '#dc2626';
+              loginStatus.style.background = 'rgba(220, 38, 38, 0.1)';
+              loginStatus.textContent = '❌ ' + (data.error || 'Failed to send magic link. Please try again.');
             }
           } catch (err) {
-            loginStatus.style.color = 'red';
-            loginStatus.textContent = '❌ Network error. Please try again.';
+            loginStatus.style.color = '#dc2626';
+            loginStatus.style.background = 'rgba(220, 38, 38, 0.1)';
+            loginStatus.textContent = '❌ Network error. Please check your connection and try again.';
           } finally {
-            btn.disabled = false; btn.textContent = 'Get Magic Link';
+            btn.disabled = false;
+            btn.textContent = 'Send Login Link';
           }
         });
       }
     })();
+    
+    // Syllabus toggle function
+    function toggleSyllabus(courseId) {
+      const content = document.getElementById(courseId + '-syllabus');
+      const toggle = content.previousElementSibling;
+      
+      content.classList.toggle('active');
+      toggle.classList.toggle('active');
+    }
   </script>
 </body>
 </html>
