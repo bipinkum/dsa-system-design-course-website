@@ -170,31 +170,52 @@
       align-items: center;
     }
 
-    .hero-eyebrow {
+    /* ─── URGENCY BANNER ─── */
+    .urgency-banner {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      background: rgba(6,182,212,0.1);
-      border: 1px solid rgba(6,182,212,0.25);
-      padding: 6px 14px;
-      border-radius: 100px;
-      margin-bottom: 28px;
+      gap: 12px;
+      background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(37,99,235,0.12));
+      border: 1px solid rgba(245,158,11,0.35);
+      padding: 10px 20px;
+      border-radius: 12px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
     }
-    .hero-eyebrow::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--cyan);
+    .urgency-dot {
+      width: 8px; height: 8px;
+      background: #22c55e;
       border-radius: 50%;
-      animation: pulse 2s ease infinite;
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.25);
+      animation: pulse-green 2s ease infinite;
+      flex-shrink: 0;
     }
-    @keyframes pulse {
-      0%,100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.75); }
+    @keyframes pulse-green {
+      0%,100% { box-shadow: 0 0 0 3px rgba(34,197,94,0.25); }
+      50%      { box-shadow: 0 0 0 6px rgba(34,197,94,0.08); }
+    }
+    .urgency-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: #22c55e;
+      letter-spacing: 0.03em;
+    }
+    .urgency-divider {
+      width: 1px; height: 16px;
+      background: rgba(255,255,255,0.15);
+      flex-shrink: 0;
+    }
+    .urgency-highlight {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+    .urgency-seats {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold2);
+      letter-spacing: 0.01em;
     }
 
     .hero h1 {
@@ -1232,7 +1253,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <div class="nav-brand">Bipin<span>.</span>Kumar</div>
+    <div class="nav-brand">Bipin Kumar</div>
     <div class="nav-links">
       <button class="nav-btn" data-tab="home">Home</button>
       <button class="nav-btn" data-tab="about">About</button>
@@ -1255,14 +1276,21 @@
 
     <div class="hero-content">
       <div class="hero-left">
-        <div class="hero-eyebrow">Next cohort starts April 11 — 75 seats only</div>
+        <div class="urgency-banner">
+          <div class="urgency-dot"></div>
+          <span class="urgency-text">Enrollments Open</span>
+          <div class="urgency-divider"></div>
+          <span class="urgency-highlight">April  18 - Cohort</span>
+          <div class="urgency-divider"></div>
+          <span class="urgency-seats">🔥 Only 75 seats</span>
+        </div>
         <h1>
           Master DSA<br>
           <span class="line2">&amp; System Design</span><br>
           <span class="line3">the right way.</span>
         </h1>
         <p class="hero-desc">
-          Mentor-led courses by a <strong>Senior Principal Engineer</strong> with 18+ years at Oracle Cloud &amp; AWS. Interview-ready. Production-grade. Real-world focused.
+          Mentor-led courses by a <strong>Senior Principal Engineer &amp; Software Architect</strong> with 18+ years building distributed systems on Oracle Cloud and AWS. Interview-ready. Production-grade. Real-world focused.
         </p>
         <div class="hero-ctas">
           <button class="btn-primary" data-tab="courses">
@@ -1284,7 +1312,7 @@
             <div class="lbl">Seats only</div>
           </div>
           <div class="hero-stat">
-            <div class="num">Apr <span>11</span></div>
+            <div class="num">Apr <span>18</span></div>
             <div class="lbl">Cohort starts</div>
           </div>
         </div>
@@ -1303,7 +1331,7 @@
       <div class="profile-card">
         <img class="profile-img" src="bipin.jpeg" alt="Bipin Kumar" loading="lazy"/>
         <div class="profile-name">Bipin Kumar</div>
-        <div class="profile-title">Senior Principal Software Engineer</div>
+        <div class="profile-title">Software Architect · Distributed Systems · AWS</div>
         <div class="profile-tags">
           <span class="profile-tag oracle">Oracle Cloud</span>
           <span class="profile-tag aws">AWS</span>
@@ -1318,10 +1346,10 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
             LinkedIn
           </a>
-          <a class="profile-link" href="https://github.com/bipinkum" target="_blank" rel="noopener">
+          <!-- <a class="profile-link" href="https://github.com/bipinkum" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
             GitHub
-          </a>
+          </a> -->
         </div>
       </div>
     </div>
@@ -1337,14 +1365,14 @@
       <div class="about-img-wrap">
         <img class="about-img" src="bipin.jpeg" alt="Bipin Kumar"/>
         <div class="about-badge">
-          <div class="about-badge-title">Senior Principal Engineer</div>
-          <div class="about-badge-sub">Oracle Cloud &amp; AWS · 18+ Years</div>
+          <div class="about-badge-title">Software Architect · AWS</div>
+          <div class="about-badge-sub">Distributed Systems · 18+ Years</div>
         </div>
       </div>
       <div class="about-text">
         <h2>Bipin Kumar</h2>
-        <div class="tagline">Mentor · Motivator · Problem-Solver · Technology Explorer</div>
-        <p>I'm a <strong>Senior Principal Software Engineer and Engineering Leader</strong> specializing in building large-scale microservices on Oracle Cloud and AWS. With over 18 years of experience, I have transformed complex monolithic systems into scalable, event-driven microservices architectures across multiple industries.</p>
+        <div class="tagline">Software Architect · Distributed Systems · Mentor · Technology Explorer</div>
+        <p>I'm a <strong>Senior Principal Software Engineer and Engineering Leader</strong> specializing in building large-scale microservices using Oracle Cloud and AWS. With over 18 years of experience, I have transformed complex monolithic systems into scalable, event-driven microservices architectures across multiple industries — including fintech, healthcare, and enterprise software.</p>
         <p>My teaching philosophy is simple: <strong>theory without practice is useless</strong>. Every concept I teach is grounded in real production systems I've actually built and scaled — not textbook examples.</p>
         <div class="about-highlight">
           "Join my courses to not just learn theory, but to understand how real-world systems are actually built and scaled in production environments."
@@ -1354,9 +1382,8 @@
           <div class="about-companies-label">Worked with</div>
           <div class="company-logos">
             <span class="company-chip oracle">Oracle</span>
-            <span class="company-chip aws">AWS</span>
-            <span class="company-chip">Microservices</span>
-            <span class="company-chip">Cloud Architecture</span>
+            <span class="company-chip aws">Boomi</span>
+            <span class="company-chip">SG</span>
           </div>
         </div>
       </div>
@@ -1377,12 +1404,12 @@
 
     <div class="batch-banner" style="margin-bottom: 40px;">
       <div class="batch-info">
-        <h3>Cohort 2025 — Enrollments Open</h3>
+        <h3>Cohort 2026 — Enrollments Open</h3>
         <p>Live mentor-led sessions · Limited to 75 seats</p>
       </div>
       <div class="batch-stats">
         <div class="batch-stat">
-          <div class="val">Apr 11</div>
+          <div class="val">Apr 18</div>
           <div class="key">Start date</div>
         </div>
         <div class="batch-stat">
@@ -1561,17 +1588,19 @@
       </div>
 
       <div class="teaching-card">
-        <div class="video-thumb" style="display:flex;align-items:center;justify-content:center;background:var(--navy3);">
-          <div style="text-align:center;padding:32px;">
-            <div style="font-size:48px;margin-bottom:16px;">🎬</div>
-            <div style="font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;">System Design Walkthrough</div>
-            <div style="font-size:13px;color:var(--muted);">Video coming soon</div>
-          </div>
+        <div class="video-thumb">
+          <iframe
+            src="https://www.youtube.com/embed/YTL0WMRIglY?start=131"
+            title="System Design Sample Lecture by Bipin Kumar"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
         </div>
         <div class="teaching-body">
           <h3>System Design Walkthrough</h3>
           <p>Step-by-step breakdowns of real-world architecture decisions, visual diagrams, and examples from production systems at Oracle Cloud and AWS.</p>
-          <span class="teaching-tag">Coming Soon · System Design</span>
+          <span class="teaching-tag">Free Sample · System Design</span>
         </div>
       </div>
     </div>
@@ -1591,7 +1620,7 @@
             <div class="testi-avatar">RK</div>
             <div>
               <div class="testi-name">Rahul K.</div>
-              <div class="testi-role">SDE-2 at Amazon · Batch 2024</div>
+              <div class="testi-role">SDE-2 at Amazon · Batch 2026</div>
             </div>
           </div>
         </div>
@@ -1602,7 +1631,7 @@
             <div class="testi-avatar">PS</div>
             <div>
               <div class="testi-name">Priya S.</div>
-              <div class="testi-role">Staff Engineer at Flipkart · Batch 2024</div>
+              <div class="testi-role">SWE Engineer at Flipkart · Batch 2025</div>
             </div>
           </div>
         </div>
@@ -1613,7 +1642,7 @@
             <div class="testi-avatar">AM</div>
             <div>
               <div class="testi-name">Arun M.</div>
-              <div class="testi-role">SWE at Microsoft · Batch 2023</div>
+              <div class="testi-role">SWE at Microsoft · Batch 2025</div>
             </div>
           </div>
         </div>
@@ -1662,9 +1691,9 @@
         <div class="pricing-body">
           <div class="pricing-includes">What's included</div>
           <div class="pricing-features">
-            <div class="pricing-feature"><span class="check">✓</span><span>Starts April 11 · 9–12 AM weekends</span></div>
+            <div class="pricing-feature"><span class="check">✓</span><span>Starts April 18 · 9–12 AM weekends</span></div>
             <div class="pricing-feature"><span class="check">✓</span><span>Limited to 75 seats this cohort</span></div>
-            <div class="pricing-feature"><span class="check">✓</span><span>Full System Design curriculum (10 weeks)</span></div>
+            <div class="pricing-feature"><span class="check">✓</span><span>DSA + System Design curriculum (20 weeks)</span></div>
             <div class="pricing-feature"><span class="check">✓</span><span>Recorded lecture access (lifetime)</span></div>
             <div class="pricing-feature"><span class="check">✓</span><span>Doubt-clearing sessions with Bipin</span></div>
             <div class="pricing-feature"><span class="check">✓</span><span>Private student community access</span></div>
@@ -1707,7 +1736,7 @@
           </div>
           <div class="faq-item">
             <button class="faq-q" onclick="toggleFaq(this)"><span>How are sessions scheduled?</span><span class="faq-icon">+</span></button>
-            <div class="faq-a">Sessions run every weekend from <strong>9:00 AM – 12:00 PM</strong>, making it easy to attend alongside college or a full-time job. Each session is 3 hours with a mix of concept teaching, live problem solving, and Q&A. The next cohort kicks off <strong>April 11, 2025</strong>.</div>
+            <div class="faq-a">Sessions run every weekend from <strong>9:00 AM – 12:00 PM</strong>, making it easy to attend alongside college or a full-time job. Each session is 3 hours with a mix of concept teaching, live problem solving, and Q&A. The next cohort kicks off <strong>April 18, 2025</strong>.</div>
           </div>
           <div class="faq-item">
             <button class="faq-q" onclick="toggleFaq(this)"><span>Do I get personal access to Bipin?</span><span class="faq-icon">+</span></button>
@@ -1766,8 +1795,8 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="footer-logo">Bipin<span>.</span>Kumar</div>
-      <div class="footer-desc">Senior Principal Engineer with 18+ years at Oracle Cloud and AWS. Teaching DSA and System Design the way it's done in production.</div>
+      <div class="footer-logo">Bipin Kumar</div>
+      <div class="footer-desc">Software Architect with 18+ years building distributed systems on Oracle Cloud and AWS. Teaching DSA and System Design the way it's done in production.</div>
     </div>
     <div class="footer-links-group">
       <h4>Course</h4>
